@@ -1366,7 +1366,69 @@ function showMembresPDFFilter(){
     </div></div>
     <div class="br" style="margin-top:12px">
       <button class="btn bp sm" onclick="exportPDFMembresFiltre()">📄 Générer PDF</button>
-      <button class=
+      <button class=${equipes.map(e=>`<option value="${e}">${e}</option>`).join('')}
+        </select>
+      </div>
+      <div class="fg"><label class="fl">Ancien chef</label>
+        <select id="chg-old" class="fs"><option value="">— Sélectionnez l'équipe —</option></select>
+      </div>
+      <div class="fg"><label class="fl">Nouveau chef</label>
+        <select id="chg-new" class="fs">
+          <option value="">— Choisir —</option>
+          ${chefs.map(c=>`<option value="${c.id}">${c.name} (${c.team||'—'})</option>`).join('')}
+        </select>
+      </div>
+    </div>
+    <div class="fg" style="margin-bottom:13px"><label class="fl">Motif</label>
+      <textarea id="chg-motif" class="fta" placeholder="Raison du changement..."></textarea>
+    </div>
+    <div class="br">
+      <button class="btn bpu sm" onclick="submitChangement()">📨 Soumettre</button>
+      <button class="btn bg sm" onclick="document.getElementById('chg-fw').innerHTML=''">Annuler</button>
+    </div>
+  </div>`;
+}
+function updateChgChefs(){
+  const eq=document.getElementById('chg-eq').value;
+  const chefs=DB.users.filter(u=>u.role==='chef'&&u.team===eq&&u.actif);
+  document.getElementById('chg-old').innerHTML=`<option value="">— Choisir —</option>${chefs.map(c=>`<option value="${c.id}">${c.name}</option>`).join('')}`;
+}
+async function submitChangement(){
+  const equipe=document.getElementById('chg-eq').value;
+  const ancienChefId=document.getElementById('chg-old').value;
+  const nouveauChefId=document.getElementById('chg-new').value;
+  const motif=document.getElementById('chg-motif').value.trim();
+  if(!equipe||!ancienChefId||!nouveauChefId)return notify('Remplissez tous les champs','er');
+  if(ancienChefId===nouveauChefId)return notify('Ancien et nouveau chef identiques','er');
+  const ancienChef=uobj(ancienChefId);const nouveauChef=uobj(nouveauChefId);
+  await fsAdd('changements',{demandeurId:CU.id,equipe,ancienChefId,ancienChefNom:ancienChef?.name||'—',nouveauChefId,nouveauChefNom:nouveauChef?.name||'—',motif,date:today(),statusDev:'en attente'});
+  await notifyUsers(['dev'],`🔄 Changement de chef — ${equipe}`,
+    `Bonjour,\n\n${CU.name} demande un changement de chef pour ${equipe} :\n\nAncien : ${ancienChef?.name||'—'}\nNouveau : ${nouveauChef?.name||'—'}\nMotif : ${motif||'—'}\n\nConnectez-vous pour appliquer.\n\nEMS SARL`);
+  notify('Demande soumise ! Dev notifié.');
+  document.getElementById('chg-fw').innerHTML='';
+}
+async function executerChangement(id){
+  if(!confirm('Appliquer ce changement de chef ?'))return;
+  const c=DB.changements.find(c=>c.id===id);if(!c)return;
+  const membres=DB.users.filter(u=>u.chefId===c.ancienChefId&&u.role==='missionnaire');
+  for(const m of membres)await fsUpdate('users',m.id,{chefId:c.nouveauChefId});
+  await fsUpdate('users',c.nouveauChefId,{team:c.equipe});
+  await fsUpdate('changements',id,{statusDev:'approuvé',devDate:today()});
+  await notifyUser(c.ancienChefId,`📩 Vous n'êtes plus chef de ${c.equipe}`,
+    `Bonjour ${c.ancienChefNom},\n\nVous avez été remplacé comme chef de ${c.equipe} par ${c.nouveauChefNom}.\n\nDecision de : ${uname(c.demandeurId)}.\n\nEMS SARL`);
+  await notifyUser(c.nouveauChefId,`🎉 Vous êtes chef de ${c.equipe}`,
+    `Bonjour ${c.nouveauChefNom},\n\nVous êtes nommé chef de ${c.equipe} par ${uname(c.demandeurId)}.\n${membres.length} agent(s) transféré(s).\n\nEMS SARL`);
+  await notifyUser(c.demandeurId,`✅ Changement appliqué — ${c.equipe}`,
+    `Bonjour,\n\nChangement appliqué pour ${c.equipe}.\nAncien : ${c.ancienChefNom} → Nouveau : ${c.nouveauChefNom}\n${membres.length} agent(s) transféré(s).\n\nEMS SARL`);
+  notify(`Changement appliqué ! ${membres.length} agent(s) transféré(s).`,'ok');
+}
+async function refuserChangement(id){
+  const c=DB.changements.find(c=>c.id===id);
+  await fsUpdate('changements',id,{statusDev:'refusé',devDate:today()});
+  if(c)await notifyUser(c.demandeurId,`❌ Changement refusé — ${c.equipe}`,
+    `Bonjour,\n\nVotre demande de changement pour ${c.equipe} a été refusée.\n\nEMS SARL`);
+  notify('Changement refusé — Demandeur notifié');
+  }
 // ══════════════════════════════════════════
 // RECRUTEMENT
 // ══════════════════════════════════════════
