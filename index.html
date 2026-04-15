@@ -10,21 +10,14 @@
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
 :root{
-  --forest:#0d3320;--fm:#1a5c3a;--fl:#2e8b57;
-  --navy:#0f2744;--nm:#1e3a5f;
-  --gold:#c9963a;--gl:#f5c842;
-  --cream:#f1f4ef;--white:#fff;
-  --red:#c0392b;--rl:#fdecea;
-  --grl:#eaf7ef;--or:#d97706;--orl:#fef3c7;
-  --blue:#2563eb;--bl:#dbeafe;
-  --purple:#7c3aed;--pl:#ede9fe;
+  --forest:#0d3320;--fl:#2e8b57;--navy:#0f2744;--nm:#1e3a5f;
+  --gold:#c9963a;--gl:#f5c842;--cream:#f1f4ef;--white:#fff;
+  --red:#c0392b;--rl:#fdecea;--grl:#eaf7ef;--or:#d97706;--orl:#fef3c7;
+  --blue:#2563eb;--bl:#dbeafe;--purple:#7c3aed;--pl:#ede9fe;
   --gray50:#f8fafc;--gray100:#f3f4f6;--gray200:#e5eaf0;
   --gray400:#9ca3af;--gray600:#6b7280;--gray800:#1f2937;
-  --sh:0 1px 4px rgba(0,0,0,.07);
-  --shm:0 4px 20px rgba(0,0,0,.1);
-  --shl:0 12px 48px rgba(0,0,0,.18);
-  --r:12px;--rs:8px;
-  --F:'Sora',sans-serif;--M:'DM Mono',monospace;
+  --sh:0 1px 4px rgba(0,0,0,.07);--shm:0 4px 20px rgba(0,0,0,.1);--shl:0 12px 48px rgba(0,0,0,.18);
+  --r:12px;--rs:8px;--F:'Sora',sans-serif;--M:'DM Mono',monospace;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--F);background:var(--cream);color:var(--gray800);min-height:100vh}
@@ -55,7 +48,7 @@ body{font-family:var(--F);background:var(--cream);color:var(--gray800);min-heigh
 .av{border-radius:50%;background:linear-gradient(135deg,var(--nm),var(--fl));color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0}
 .tag{display:inline-block;padding:2px 9px;border-radius:18px;font-size:11px;font-weight:700}
 .tg{background:var(--grl);color:#15803d}.to{background:var(--orl);color:var(--or)}.tr{background:var(--rl);color:var(--red)}
-.tb{background:var(--bl);color:var(--blue)}.tp{background:var(--pl);color:var(--purple)}.tgr{background:var(--gray100);color:var(--gray600)}
+.tb{background:var(--bl);color:var(--blue)}.tp{background:var(--pl);color:var(--purple)}.tgr{background:var(--gray100);color:var(--gray600)}.tgo{background:#fef3c7;color:#92400e}
 #notif{position:fixed;top:16px;right:16px;z-index:9999;padding:10px 16px;border-radius:var(--rs);font-size:13px;font-weight:700;box-shadow:var(--shl);transform:translateY(-60px);opacity:0;transition:all .3s cubic-bezier(.34,1.56,.64,1);pointer-events:none;max-width:320px}
 #notif.on{transform:translateY(0);opacity:1}
 #notif.ok{background:var(--grl);color:#15803d;border-left:4px solid #16a34a}
@@ -77,7 +70,7 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--gray50)}
 .ft{font-size:15px;font-weight:800;color:var(--nm);margin-bottom:16px}
 .fg2{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:11px;margin-bottom:11px}
 .fg{display:flex;flex-direction:column;gap:4px}
-.fl{font-size:11px;font-weight:700;color:var(--gray800);letter-spacing:.03em}
+.lbl{font-size:11px;font-weight:700;color:var(--gray800);letter-spacing:.03em}
 .fi,.fs,.fta{padding:8px 10px;border-radius:var(--rs);border:1.5px solid var(--gray200);font-size:13px;font-family:var(--F);color:var(--gray800);background:var(--white);outline:none;width:100%;transition:border-color .14s}
 .fi:focus,.fs:focus,.fta:focus{border-color:var(--fl);box-shadow:0 0 0 3px rgba(46,139,87,.1)}
 .fta{min-height:82px;resize:vertical}
@@ -101,7 +94,7 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--gray50)}
 .divider{display:flex;align-items:center;gap:10px;margin:14px 0;color:var(--gray400);font-size:12px}
 .divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--gray200)}
 .mbg{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:999;display:flex;align-items:center;justify-content:center;padding:16px}
-.modal{background:var(--white);border-radius:16px;padding:26px;width:100%;max-width:500px;box-shadow:var(--shl);max-height:90vh;overflow-y:auto}.mlg{max-width:680px}
+.modal{background:var(--white);border-radius:16px;padding:26px;width:100%;max-width:500px;box-shadow:var(--shl);max-height:90vh;overflow-y:auto}.mlg{max-width:700px}
 .mt{font-size:17px;font-weight:800;color:var(--nm);margin-bottom:16px}
 .acard{background:var(--white);border-radius:var(--r);padding:18px;margin-bottom:12px;box-shadow:var(--sh);border-left:4px solid var(--fl);transition:transform .13s}
 .acard:hover{transform:translateX(3px)}.acard.urgent{border-left-color:var(--red)}.acard.info{border-left-color:var(--blue)}.acard.event{border-left-color:var(--purple)}
@@ -115,16 +108,20 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--gray50)}
 .pbf{height:100%;background:linear-gradient(90deg,var(--fl),var(--gold));border-radius:3px;transition:width .6s cubic-bezier(.34,1.56,.64,1)}
 .dh{background:linear-gradient(135deg,var(--navy),var(--forest));border-radius:var(--r);padding:18px 20px;margin-bottom:22px;color:#fff}
 .empty{text-align:center;padding:38px 18px;color:var(--gray600);font-size:14px}.eico{font-size:36px;margin-bottom:9px}
+.legal-footer{background:var(--navy);color:rgba(255,255,255,.45);font-size:11px;text-align:center;padding:12px 20px;border-top:1px solid rgba(255,255,255,.07);line-height:1.7;flex-shrink:0}
+.legal-footer strong{color:rgba(255,255,255,.75)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}.ps{animation:fadeUp .22s ease}
 @media(max-width:768px){.sb{display:none}.g2{grid-template-columns:1fr}.g3{grid-template-columns:1fr 1fr}.cnt{padding:14px}}
 </style>
-</head>
-<body>
+  </head>
+  <body>
 <div id="notif"></div>
 <div id="app-loading">
   <div class="spin"></div>
   <div style="color:rgba(255,255,255,.7);font-size:14px;font-family:'Sora',sans-serif">Connexion à EMS SARL...</div>
 </div>
+
+<!-- LOGIN -->
 <div id="LS">
   <div class="lbox">
     <div style="text-align:center;margin-bottom:28px">
@@ -133,29 +130,36 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--gray50)}
       <p style="color:var(--gray600);font-size:12px;margin-top:3px">Plateforme de gestion des missions de vente</p>
     </div>
     <div class="fg" style="margin-bottom:11px">
-      <label class="fl">Adresse email</label>
-      <input id="l-email" class="fi" type="email" placeholder="votre@email.com" onkeydown="if(event.key==='Enter')doLogin()">
+      <label class="lbl">Adresse email</label>
+      <input id="l-email" class="fi" type="email" placeholder="votre@email.com">
     </div>
     <div class="fg" style="margin-bottom:16px">
-      <label class="fl">Mot de passe</label>
+      <label class="lbl">Mot de passe</label>
       <div class="pw-wrap">
-        <input id="l-pass" class="fi" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
-        <button class="pw-eye" onclick="togglePw()" id="pw-eye-btn">👁</button>
+        <input id="l-pass" class="fi" type="password" placeholder="••••••••">
+        <button class="pw-eye" id="pw-eye-btn">👁</button>
       </div>
     </div>
     <div id="l-err" style="color:var(--red);font-size:12px;font-weight:700;margin-bottom:10px;display:none">❌ Email ou mot de passe incorrect</div>
-    <button id="l-btn" class="btn bp" style="width:100%;padding:12px;font-size:14px;justify-content:center" onclick="doLogin()">🔑 Se connecter</button>
+    <button id="l-btn" class="btn bp" style="width:100%;padding:12px;font-size:14px;justify-content:center">🔑 Se connecter</button>
     <div class="divider">ou</div>
-    <button class="g-btn" onclick="doGoogleLogin()">
+    <button id="g-login-btn" class="g-btn">
       <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
       Continuer avec Google
     </button>
     <div style="margin-top:12px;text-align:center">
       <span style="font-size:12px;color:var(--gray600)">Candidature externe ? </span>
-      <button onclick="openPublicRecru()" style="background:none;border:none;color:var(--blue);font-size:12px;font-weight:700;cursor:pointer">Postuler →</button>
+      <button id="public-recru-btn" style="background:none;border:none;color:var(--blue);font-size:12px;font-weight:700;cursor:pointer">Postuler →</button>
+    </div>
+    <div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--gray200);text-align:center;font-size:10px;color:var(--gray400);line-height:1.7">
+      © <strong style="color:var(--gray600)">EMS SARL</strong> — Tous droits réservés<br>
+      Une initiative de <strong style="color:var(--gray600)">Kouessi Franck Kévin ADRE</strong><br>
+      &amp; <strong style="color:var(--gray600)">HOUESSOU Gbessou Kamarou</strong>
     </div>
   </div>
 </div>
+
+<!-- APP -->
 <div id="app">
   <aside class="sb">
     <div class="sb-brand">
@@ -167,7 +171,7 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--gray50)}
       <div class="uc">
         <div class="av" id="sb-av" style="width:30px;height:30px;font-size:11px"></div>
         <div style="flex:1;min-width:0"><div class="un" id="sb-name"></div><div class="ur" id="sb-role"></div></div>
-        <button class="lout" onclick="doLogout()" title="Déconnexion">⏻</button>
+        <button class="lout" id="logout-btn" title="Déconnexion">⏻</button>
       </div>
     </div>
   </aside>
@@ -183,23 +187,22 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--gray50)}
       </div>
     </div>
     <div class="cnt" id="pg"></div>
+    <div class="legal-footer">
+      © <strong>EMS SARL</strong> — Tous droits réservés &nbsp;|&nbsp;
+      Une initiative de <strong>Kouessi Franck Kévin ADRE</strong> &amp; <strong>HOUESSOU Gbessou Kamarou</strong>
+    </div>
   </div>
-</div>
+          </div>
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics-compat.js"></script>
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { getFirestore, collection, doc, getDocs, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-
+<script>
 // ══════════════════════════════════════════
-// CONFIG
+// FIREBASE INIT (compat SDK — résout le bug inline onclick)
 // ══════════════════════════════════════════
-const EMAILJS_SERVICE_ID  = 'service_2p32i46';
-const EMAILJS_TEMPLATE_ID = 'template_djf6bap';
-const EMAILJS_PUBLIC_KEY  = 'KmYGxfBnkY9PglqlB';
-emailjs.init(EMAILJS_PUBLIC_KEY);
-
 const firebaseConfig = {
   apiKey:"AIzaSyDpMUkv-5nr4r6eIcu6pH9j7c4V9oeobI8",
   authDomain:"ems-sarl.firebaseapp.com",
@@ -209,135 +212,183 @@ const firebaseConfig = {
   appId:"1:954732073802:web:da9360e7d8fa6b0f2667b3",
   measurementId:"G-4MTVN4D58Q"
 };
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const auth = getAuth(app);
-const db   = getFirestore(app);
-const googleProvider = new GoogleAuthProvider();
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db   = firebase.firestore();
+
+// ══════════════════════════════════════════
+// EMAILJS CONFIG
+// ══════════════════════════════════════════
+const EMAILJS_SERVICE_ID  = 'service_2p32i46';
+const EMAILJS_TEMPLATE_ID = 'template_djf6bap';
+const EMAILJS_PUBLIC_KEY  = 'KmYGxfBnkY9PglqlB';
+emailjs.init(EMAILJS_PUBLIC_KEY);
+
+// ══════════════════════════════════════════
+// COMPTE DÉVELOPPEUR (accès direct sans Firebase Auth)
+// ══════════════════════════════════════════
+const DEV_EMAIL = 'franckadre7@gmail.com';
+const DEV_PASS  = 'Fr@58070708';
+const DEV_PROFILE = {
+  id:'dev-master', name:'Franck Kévin ADRE', role:'dev',
+  email:DEV_EMAIL, av:'FK', team:null, chefId:null, actif:true
+};
 
 // ══════════════════════════════════════════
 // CONSTANTES
 // ══════════════════════════════════════════
-const ROLES={pdg:'PDG',admin:'Directeur Général',chef:"Chef d'équipe",missionnaire:'Missionnaire',rh:'RH / Finance',dev:'Développeur Web'};
-const PRODUCTS=['NeemActiv 500mg','PropoBio Sirop','KariteVit Crème','AloeDetox Gel','MoringaBoost Caps'];
-const ZONES=['Cotonou Centre','Cotonou Nord','Porto-Novo','Parakou','Lokossa','Bohicon'];
-const ANN_TYPES={general:'Général',urgent:'Urgent',info:'Info',event:'Événement'};
-const COMM_PALIERS=[
-  {min:0,      max:99999,   taux:5,  label:'Palier Bronze'},
-  {min:100000, max:199999,  taux:8,  label:'Palier Argent'},
-  {min:200000, max:349999,  taux:10, label:'Palier Or'},
-  {min:350000, max:Infinity,taux:13, label:'Palier Platine'},
+const ROLES = {
+  pdg:'PDG', admin:'Directeur Général', chef:"Chef d'équipe",
+  missionnaire:'Agent commercial', rh:'RH / Finance', dev:'Développeur Web'
+};
+const PRODUCTS = ['NeemActiv 500mg','PropoBio Sirop','KariteVit Crème','AloeDetox Gel','MoringaBoost Caps'];
+const ZONES    = ['Cotonou Centre','Cotonou Nord','Porto-Novo','Parakou','Lokossa','Bohicon'];
+const ANN_TYPES = {general:'Général', urgent:'Urgent', info:'Info', event:'Événement'};
+
+// ══════════════════════════════════════════
+// PALIERS DE COMMISSION EMS SARL
+// < 100 000 FCFA  → 0%
+// 100 000 – 252 499 FCFA → 18%
+// ≥ 252 500 FCFA  → 27%
+// ══════════════════════════════════════════
+const COMM_PALIERS = [
+  {min:0,      max:99999,   taux:0,  label:'Aucune commission',   color:'#9ca3af'},
+  {min:100000, max:252499,  taux:18, label:'Commission Standard', color:'#2e8b57'},
+  {min:252500, max:Infinity,taux:27, label:'Commission Premium',  color:'#c9963a'},
 ];
 
 // ══════════════════════════════════════════
 // ÉTAT GLOBAL
 // ══════════════════════════════════════════
-let CU=null, CP='dashboard', selMsg=null, nT, pdfMode='mois', membresPDFMode='mois';
-let unsubscribers=[];
-let DB={users:[],stats:[],plaintes:[],messages:[],annonces:[],demandes:[],recrutements:[],candidatures:[],suppressions:[],changements:[]};
+let CU = null; // current user
+let CP = 'dashboard';
+let selMsg = null;
+let pdfMode = 'mois';
+let membresPDFMode = 'mois';
+let unsubscribers = [];
+let DB = {
+  users:[], stats:[], plaintes:[], messages:[], annonces:[],
+  demandes:[], recrutements:[], candidatures:[], suppressions:[], changements:[]
+};
 
 // ══════════════════════════════════════════
-// EMAILJS
+// EMAILJS — ENVOI
 // ══════════════════════════════════════════
-async function sendMail(to_email,to_name,subject,message){
-  if(!to_email)return;
-  try{
-    await emailjs.send(EMAILJS_SERVICE_ID,EMAILJS_TEMPLATE_ID,{
-      to_email,to_name,subject,message,
-      from_name:'EMS SARL — Mission Manager',
-      reply_to:'noreply@ems-sarl.bj'
+async function sendMail(to_email, to_name, subject, message) {
+  if (!to_email) return;
+  try {
+    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      to_email, to_name, subject, message,
+      from_name: 'EMS SARL — Mission Manager',
+      reply_to: 'noreply@ems-sarl.bj'
     });
-  }catch(e){console.warn('EmailJS:',e);}
+  } catch(e) { console.warn('EmailJS:', e); }
 }
-async function notifyUsers(roles,subject,message){
-  const targets=DB.users.filter(u=>roles.includes(u.role)&&u.email&&u.actif);
-  for(const u of targets) await sendMail(u.email,u.name,subject,message);
+async function notifyUsers(roles, subject, message) {
+  const targets = DB.users.filter(u => roles.includes(u.role) && u.email && u.actif);
+  for (const u of targets) await sendMail(u.email, u.name, subject, message);
 }
-async function notifyUser(userId,subject,message){
-  const u=uobj(userId); if(u) await sendMail(u.email,u.name,subject,message);
+async function notifyUser(userId, subject, message) {
+  const u = uobj(userId);
+  if (u) await sendMail(u.email, u.name, subject, message);
 }
 
 // ══════════════════════════════════════════
 // FIRESTORE HELPERS
 // ══════════════════════════════════════════
-async function fsGetAll(col){
-  const snap=await getDocs(collection(db,col));
-  return snap.docs.map(d=>({...d.data(),id:d.id}));
+async function fsGetAll(col) {
+  const snap = await db.collection(col).get();
+  return snap.docs.map(d => ({...d.data(), id: d.id}));
 }
-async function fsAdd(col,data){
-  const ref=await addDoc(collection(db,col),{...data,createdAt:serverTimestamp()});
+async function fsAdd(col, data) {
+  const ref = await db.collection(col).add({...data, createdAt: firebase.firestore.FieldValue.serverTimestamp()});
   return ref.id;
 }
-async function fsSet(col,id,data){
-  await setDoc(doc(db,col,String(id)),data,{merge:true});
+async function fsSet(col, id, data) {
+  await db.collection(col).doc(String(id)).set(data, {merge: true});
 }
-async function fsUpdate(col,id,data){
-  await updateDoc(doc(db,col,String(id)),data);
+async function fsUpdate(col, id, data) {
+  await db.collection(col).doc(String(id)).update(data);
 }
-async function fsDelete(col,id){
-  await deleteDoc(doc(db,col,String(id)));
+async function fsDelete(col, id) {
+  await db.collection(col).doc(String(id)).delete();
 }
-function fsListen(col,callback){
-  const unsub=onSnapshot(collection(db,col),snap=>{
-    callback(snap.docs.map(d=>({...d.data(),id:d.id})));
+function fsListen(col, callback) {
+  const unsub = db.collection(col).onSnapshot(snap => {
+    callback(snap.docs.map(d => ({...d.data(), id: d.id})));
   });
   unsubscribers.push(unsub);
 }
-function stopListeners(){unsubscribers.forEach(u=>u());unsubscribers=[];}
-
+function stopListeners() { unsubscribers.forEach(u => u()); unsubscribers = []; }
+      </script>
+      <script>
 // ══════════════════════════════════════════
 // HELPERS UI
 // ══════════════════════════════════════════
-function notify(msg,t='ok'){
-  const el=document.getElementById('notif');
-  el.textContent=({ok:'✅',er:'❌',inf:'ℹ️'}[t]||'')+' '+msg;
-  el.className='on '+t;
-  clearTimeout(nT);nT=setTimeout(()=>el.className='',3400);
+let nT;
+function notify(msg, t='ok') {
+  const el = document.getElementById('notif');
+  el.textContent = ({ok:'✅',er:'❌',inf:'ℹ️'}[t]||'') + ' ' + msg;
+  el.className = 'on ' + t;
+  clearTimeout(nT); nT = setTimeout(() => el.className = '', 3400);
 }
-function fmt(n){return(+n).toLocaleString('fr-FR')+' FCFA';}
-function today(){return new Date().toISOString().split('T')[0];}
-function currentMonth(){return new Date().toISOString().slice(0,7);}
-function uname(id){const u=DB.users.find(u=>u.id===id);return u?u.name:'—';}
-function uobj(id){return DB.users.find(u=>u.id===id);}
-function avH(u,sz=30){
-  if(!u)return`<div class="av" style="width:${sz}px;height:${sz}px;font-size:${sz*.33}px;background:#ccc">?</div>`;
-  return`<div class="av" style="width:${sz}px;height:${sz}px;font-size:${sz*.33}px">${u.av}</div>`;
+function fmt(n)  { return (+n).toLocaleString('fr-FR') + ' FCFA'; }
+function today() { return new Date().toISOString().split('T')[0]; }
+function currentMonth() { return new Date().toISOString().slice(0,7); }
+function uname(id) { const u = DB.users.find(u => u.id === id); return u ? u.name : '—'; }
+function uobj(id)  { return DB.users.find(u => u.id === id); }
+function avH(u, sz=30) {
+  if (!u) return `<div class="av" style="width:${sz}px;height:${sz}px;font-size:${sz*.33}px;background:#ccc">?</div>`;
+  return `<div class="av" style="width:${sz}px;height:${sz}px;font-size:${sz*.33}px">${u.av||'?'}</div>`;
 }
-function tagH(s){
-  const mp={validé:'tg','en attente':'to',rejeté:'tr',ouvert:'tb',résolu:'tg',approuvé:'tg',refusé:'tr',urgent:'tr',general:'tg',info:'tb',event:'tp','en cours':'to',accepté:'tg'};
-  return`<span class="tag ${mp[s]||'tgr'}">${s}</span>`;
+function tagH(s) {
+  const mp = {validé:'tg','en attente':'to',rejeté:'tr',ouvert:'tb',résolu:'tg',approuvé:'tg',refusé:'tr',urgent:'tr',general:'tg',info:'tb',event:'tp','en cours':'to',accepté:'tg'};
+  return `<span class="tag ${mp[s]||'tgr'}">${s}</span>`;
 }
-function palierColor(p){return{Bronze:'#cd7f32',Argent:'#aaa',Or:'var(--gold)',Platine:'#6c5ce7'}[p.split(' ')[1]]||'var(--fl)';}
-function calcComm(userId,month){
-  const m=month||currentMonth();
-  const total=DB.stats.filter(s=>s.userId===userId&&s.status==='validé'&&s.date.startsWith(m)).reduce((a,s)=>a+s.montant,0);
-  const palier=COMM_PALIERS.slice().reverse().find(p=>total>=p.min)||COMM_PALIERS[0];
-  return{total,taux:palier.taux,commission:Math.round(total*palier.taux/100),palier:palier.label};
+function initChips() {
+  document.querySelectorAll('.chip').forEach(c => {
+    const i = c.querySelector('input');
+    if (i) i.onchange = () => c.classList.toggle('sel', i.checked);
+  });
 }
-function calcCommAll(month){
-  return DB.users.filter(u=>u.role==='missionnaire').map(u=>({user:u,...calcComm(u.id,month)}));
-}
-function initChips(){
-  document.querySelectorAll('.chip').forEach(c=>{const i=c.querySelector('input');if(i)i.onchange=()=>c.classList.toggle('sel',i.checked);});
-}
-function afterRenderInner(){
-  setTimeout(()=>{
-    document.querySelectorAll('.pbf[data-w]').forEach(el=>{el.style.width='0';setTimeout(()=>el.style.width=el.dataset.w,50);});
+function afterRenderInner() {
+  setTimeout(() => {
+    document.querySelectorAll('.pbf[data-w]').forEach(el => {
+      el.style.width = '0';
+      setTimeout(() => el.style.width = el.dataset.w, 50);
+    });
     initChips();
-  },50);
+  }, 50);
 }
-function afterRender(p){
-  if(p==='dev')setTimeout(()=>DT('users'),10);
+function afterRender(p) {
+  if (p === 'dev') setTimeout(() => DT('users'), 10);
   afterRenderInner();
 }
+
 // ══════════════════════════════════════════
-// SEED
+// CALCUL COMMISSION
 // ══════════════════════════════════════════
-async function seedIfEmpty(){
-  const snap=await getDocs(collection(db,'users'));
-  if(!snap.empty)return;
-  notify('Initialisation...','inf');
-  const users=[
+function calcComm(userId, month) {
+  const m = month || currentMonth();
+  const total = DB.stats
+    .filter(s => s.userId === userId && s.status === 'validé' && s.date.startsWith(m))
+    .reduce((a, s) => a + s.montant, 0);
+  const palier = COMM_PALIERS.slice().reverse().find(p => total >= p.min) || COMM_PALIERS[0];
+  return { total, taux: palier.taux, commission: Math.round(total * palier.taux / 100), palier: palier.label, color: palier.color };
+}
+function calcCommAll(month) {
+  return DB.users.filter(u => u.role === 'missionnaire' && u.actif)
+    .map(u => ({user: u, ...calcComm(u.id, month)}));
+}
+
+// ══════════════════════════════════════════
+// SEED DONNÉES INITIALES
+// ══════════════════════════════════════════
+async function seedIfEmpty() {
+  const snap = await db.collection('users').get();
+  if (!snap.empty) return;
+  notify('Initialisation des données...', 'inf');
+  const users = [
     {id:'1',name:'Président Dupont',role:'pdg',email:'pdg@ems.bj',av:'PD',team:null,chefId:null,actif:true},
     {id:'2',name:'Jean-Baptiste Kossou',role:'admin',email:'dg@ems.bj',av:'JK',team:null,chefId:null,actif:true},
     {id:'3',name:'Adjoua Mensah',role:'chef',email:'adjoa@ems.bj',av:'AM',team:'Équipe Nord',chefId:null,actif:true},
@@ -347,218 +398,290 @@ async function seedIfEmpty(){
     {id:'7',name:'Esther Favi',role:'missionnaire',email:'esther@ems.bj',av:'EF',team:'Équipe Sud',chefId:'4',actif:true},
     {id:'8',name:'Théodore Ahouansou',role:'rh',email:'theo@ems.bj',av:'TA',team:null,chefId:null,actif:true},
   ];
-  for(const u of users) await setDoc(doc(db,'users',u.id),u);
-  const stats=[
+  for (const u of users) await db.collection('users').doc(u.id).set(u);
+  const stats = [
     {userId:'5',date:'2026-03-10',visites:12,prospects:8,montant:145000,produits:['NeemActiv 500mg'],zone:'Cotonou Centre',status:'validé',chefId:'3',note:''},
-    {userId:'6',date:'2026-03-15',visites:9,prospects:5,montant:98000,produits:['KariteVit Crème'],zone:'Cotonou Nord',status:'en attente',chefId:'3',note:''},
-    {userId:'7',date:'2026-03-18',visites:15,prospects:11,montant:210000,produits:['AloeDetox Gel'],zone:'Porto-Novo',status:'rejeté',chefId:'4',note:'Montant incohérent'},
-    {userId:'5',date:'2026-03-25',visites:11,prospects:8,montant:160000,produits:['MoringaBoost Caps'],zone:'Cotonou Centre',status:'validé',chefId:'3',note:''},
+    {userId:'6',date:'2026-03-15',visites:9,prospects:5,montant:80000,produits:['KariteVit Crème'],zone:'Cotonou Nord',status:'en attente',chefId:'3',note:''},
+    {userId:'7',date:'2026-03-18',visites:15,prospects:11,montant:300000,produits:['AloeDetox Gel'],zone:'Porto-Novo',status:'rejeté',chefId:'4',note:'Montant incohérent'},
+    {userId:'5',date:'2026-03-25',visites:11,prospects:8,montant:260000,produits:['MoringaBoost Caps'],zone:'Cotonou Centre',status:'validé',chefId:'3',note:''},
   ];
-  for(const s of stats) await addDoc(collection(db,'stats'),s);
-  await addDoc(collection(db,'annonces'),{auteurId:'2',date:'2026-03-24',titre:'Objectif Q2 fixé',type:'general',contenu:"L'objectif T2 est de 5 000 000 FCFA.",epingle:true});
-  await addDoc(collection(db,'recrutements'),{poste:'Missionnaire de vente',equipe:'Équipe Nord',description:'Vente terrain.',requis:'Permis B, dynamique.',ouvert:true,date:'2026-03-20'});
-  notify('Données initialisées !','ok');
+  for (const s of stats) await db.collection('stats').add(s);
+  await db.collection('annonces').add({auteurId:'2',date:'2026-03-24',titre:'Objectif Q2 fixé',type:'general',contenu:"L'objectif T2 est de 5 000 000 FCFA. Mobilisons-nous !",epingle:true});
+  await db.collection('recrutements').add({poste:'Agent commercial',equipe:'Équipe Nord',description:'Vente de produits sur le terrain.',requis:'Permis B, dynamique.',ouvert:true,date:'2026-03-20'});
+  notify('Données initialisées !', 'ok');
 }
 
 // ══════════════════════════════════════════
-// CHARGEMENT
+// CHARGEMENT DONNÉES
 // ══════════════════════════════════════════
-async function loadAllData(){
-  const [users,stats,plaintes,messages,annonces,demandes,recrutements,candidatures,suppressions,changements]=await Promise.all([
-    fsGetAll('users'),fsGetAll('stats'),fsGetAll('plaintes'),fsGetAll('messages'),
-    fsGetAll('annonces'),fsGetAll('demandes'),fsGetAll('recrutements'),fsGetAll('candidatures'),
-    fsGetAll('suppressions'),fsGetAll('changements')
-  ]);
-  DB={users,stats,plaintes,messages,annonces,demandes,recrutements,candidatures,suppressions,changements};
+async function loadAllData() {
+  const [users,stats,plaintes,messages,annonces,demandes,recrutements,candidatures,suppressions,changements] =
+    await Promise.all([
+      fsGetAll('users'), fsGetAll('stats'), fsGetAll('plaintes'), fsGetAll('messages'),
+      fsGetAll('annonces'), fsGetAll('demandes'), fsGetAll('recrutements'), fsGetAll('candidatures'),
+      fsGetAll('suppressions'), fsGetAll('changements')
+    ]);
+  DB = {users,stats,plaintes,messages,annonces,demandes,recrutements,candidatures,suppressions,changements};
 }
 
-function setupListeners(){
+// ══════════════════════════════════════════
+// REALTIME LISTENERS
+// ══════════════════════════════════════════
+function setupListeners() {
   stopListeners();
-  fsListen('users',    d=>{DB.users=d;renderSB();});
-  fsListen('stats',    d=>{DB.stats=d;renderSB();if(['stats','dashboard','commissions','validation','equipe'].includes(CP))nav(CP);});
-  fsListen('annonces', d=>{DB.annonces=d;if(['annonces','dashboard'].includes(CP))nav(CP);});
-  fsListen('plaintes', d=>{DB.plaintes=d;if(['plaintes','dashboard'].includes(CP))nav(CP);});
-  fsListen('messages', d=>{DB.messages=d;renderSB();if(CP==='messages')nav(CP);});
-  fsListen('demandes', d=>{DB.demandes=d;renderSB();if(CP==='demandes')nav(CP);});
-  fsListen('recrutements',d=>{DB.recrutements=d;if(CP==='recrutement')nav(CP);});
-  fsListen('candidatures',d=>{DB.candidatures=d;if(CP==='recrutement')nav(CP);});
-  fsListen('suppressions',d=>{DB.suppressions=d;renderSB();if(CP==='suppressions')nav(CP);});
-  fsListen('changements', d=>{DB.changements=d;renderSB();if(CP==='changements')nav(CP);});
+  fsListen('users',     d => { DB.users=d; renderSB(); });
+  fsListen('stats',     d => { DB.stats=d; renderSB(); if(['stats','dashboard','commissions','validation','equipe'].includes(CP)) nav(CP); });
+  fsListen('annonces',  d => { DB.annonces=d; if(['annonces','dashboard'].includes(CP)) nav(CP); });
+  fsListen('plaintes',  d => { DB.plaintes=d; if(['plaintes','dashboard'].includes(CP)) nav(CP); });
+  fsListen('messages',  d => { DB.messages=d; renderSB(); if(CP==='messages') nav(CP); });
+  fsListen('demandes',  d => { DB.demandes=d; renderSB(); if(CP==='demandes') nav(CP); });
+  fsListen('recrutements', d => { DB.recrutements=d; if(CP==='recrutement') nav(CP); });
+  fsListen('candidatures', d => { DB.candidatures=d; if(CP==='recrutement') nav(CP); });
+  fsListen('suppressions', d => { DB.suppressions=d; renderSB(); if(CP==='suppressions') nav(CP); });
+  fsListen('changements',  d => { DB.changements=d; renderSB(); if(CP==='changements') nav(CP); });
 }
-
+      </script>
+      <script>
 // ══════════════════════════════════════════
 // AUTH
 // ══════════════════════════════════════════
-function togglePw(){
-  const i=document.getElementById('l-pass');
-  i.type=i.type==='password'?'text':'password';
-  document.getElementById('pw-eye-btn').textContent=i.type==='password'?'👁':'🙈';
+document.getElementById('pw-eye-btn').addEventListener('click', () => {
+  const i = document.getElementById('l-pass');
+  i.type = i.type === 'password' ? 'text' : 'password';
+  document.getElementById('pw-eye-btn').textContent = i.type === 'password' ? '👁' : '🙈';
+});
+
+document.getElementById('l-btn').addEventListener('click', doLogin);
+document.getElementById('l-email').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
+document.getElementById('l-pass').addEventListener('keydown',  e => { if(e.key==='Enter') doLogin(); });
+document.getElementById('g-login-btn').addEventListener('click', doGoogleLogin);
+document.getElementById('logout-btn').addEventListener('click', doLogout);
+document.getElementById('public-recru-btn').addEventListener('click', openPublicRecru);
+
+async function doLogin() {
+  const email = document.getElementById('l-email').value.trim().toLowerCase();
+  const pass  = document.getElementById('l-pass').value;
+  document.getElementById('l-err').style.display = 'none';
+  document.getElementById('l-btn').textContent = '⏳ Connexion...';
+
+  // Vérification compte développeur (bypass Firebase Auth)
+  if (email === DEV_EMAIL.toLowerCase() && pass === DEV_PASS) {
+    CU = {...DEV_PROFILE};
+    await seedIfEmpty();
+    await loadAllData();
+    setupListeners();
+    startApp();
+    return;
+  }
+
+  try {
+    await auth.signInWithEmailAndPassword(email, pass);
+    // onAuthStateChanged prendra le relais
+  } catch(e) {
+    document.getElementById('l-err').style.display = 'block';
+    document.getElementById('l-btn').textContent = '🔑 Se connecter';
+  }
 }
-async function doLogin(){
-  const email=document.getElementById('l-email').value.trim();
-  const pass=document.getElementById('l-pass').value;
-  document.getElementById('l-err').style.display='none';
-  document.getElementById('l-btn').textContent='⏳ Connexion...';
-  try{await signInWithEmailAndPassword(auth,email,pass);}
-  catch(e){document.getElementById('l-err').style.display='block';document.getElementById('l-btn').textContent='🔑 Se connecter';}
+
+async function doGoogleLogin() {
+  try {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    await auth.signInWithPopup(provider);
+  } catch(e) { notify('Erreur Google : ' + e.message, 'er'); }
 }
-async function doGoogleLogin(){
-  try{await signInWithPopup(auth,googleProvider);}
-  catch(e){notify('Erreur Google : '+e.message,'er');}
-}
-async function doLogout(){
-  stopListeners();CU=null;
-  await signOut(auth);
+
+async function doLogout() {
+  stopListeners(); CU = null; selMsg = null;
+  if (auth.currentUser) await auth.signOut();
   document.getElementById('app').classList.remove('on');
-  document.getElementById('LS').style.display='flex';
-  document.getElementById('l-email').value='';
-  document.getElementById('l-pass').value='';
-  document.getElementById('l-btn').textContent='🔑 Se connecter';
+  document.getElementById('LS').style.display = 'flex';
+  document.getElementById('l-email').value = '';
+  document.getElementById('l-pass').value = '';
+  document.getElementById('l-btn').textContent = '🔑 Se connecter';
 }
-function openPublicRecru(){
-  CU={id:'-1',name:'Visiteur',role:'public',av:'👤',team:null};
+
+function openPublicRecru() {
+  CU = {id:'-1', name:'Visiteur', role:'public', av:'👤', team:null, chefId:null, actif:true};
   startApp();
 }
-onAuthStateChanged(auth,async(fbUser)=>{
-  if(fbUser){
-    showAppLoading();
-    try{
-      const snap=await getDocs(collection(db,'users'));
-      const all=snap.docs.map(d=>({...d.data(),id:d.id}));
-      let profile=all.find(u=>u.email.toLowerCase()===fbUser.email.toLowerCase());
-      if(!profile){
-        const newId=String(Date.now());
-        profile={id:newId,name:fbUser.displayName||fbUser.email,email:fbUser.email,role:'missionnaire',
-          av:(fbUser.displayName||fbUser.email).slice(0,2).toUpperCase(),team:null,chefId:null,actif:true};
-        await setDoc(doc(db,'users',newId),profile);
-      }else if(!profile.actif){notify('Compte désactivé.','er');await signOut(auth);return;}
-      CU=profile;
-      await seedIfEmpty();
-      await loadAllData();
-      setupListeners();
-      startApp();
-    }catch(e){notify('Erreur : '+e.message,'er');await signOut(auth);hideAppLoading();}
-  }else{
+
+auth.onAuthStateChanged(async fbUser => {
+  if (!fbUser) {
+    // Si pas de user Firebase mais CU dev existe, ne pas écraser
+    if (CU && CU.id === 'dev-master') return;
     hideAppLoading();
-    document.getElementById('LS').style.display='flex';
+    document.getElementById('LS').style.display = 'flex';
     document.getElementById('app').classList.remove('on');
+    return;
+  }
+  showAppLoading();
+  try {
+    const snap = await db.collection('users').get();
+    const all  = snap.docs.map(d => ({...d.data(), id: d.id}));
+    let profile = all.find(u => u.email && u.email.toLowerCase() === fbUser.email.toLowerCase());
+    if (!profile) {
+      const newId = String(Date.now());
+      profile = {
+        id: newId, name: fbUser.displayName || fbUser.email,
+        email: fbUser.email, role: 'missionnaire',
+        av: (fbUser.displayName || fbUser.email).slice(0,2).toUpperCase(),
+        team: null, chefId: null, actif: true
+      };
+      await db.collection('users').doc(newId).set(profile);
+    } else if (!profile.actif) {
+      notify('Compte désactivé. Contactez le développeur.', 'er');
+      await auth.signOut();
+      return;
+    }
+    CU = profile;
+    await seedIfEmpty();
+    await loadAllData();
+    setupListeners();
+    startApp();
+  } catch(e) {
+    notify('Erreur : ' + e.message, 'er');
+    await auth.signOut();
+    hideAppLoading();
   }
 });
-function showAppLoading(){document.getElementById('LS').style.display='none';document.getElementById('app-loading').style.display='flex';}
-function hideAppLoading(){document.getElementById('app-loading').style.display='none';document.getElementById('LS').style.display='flex';}
-function startApp(){
-  document.getElementById('LS').style.display='none';
-  document.getElementById('app-loading').style.display='none';
+
+function showAppLoading() {
+  document.getElementById('LS').style.display = 'none';
+  document.getElementById('app-loading').style.display = 'flex';
+}
+function hideAppLoading() {
+  document.getElementById('app-loading').style.display = 'none';
+  document.getElementById('LS').style.display = 'flex';
+}
+function startApp() {
+  document.getElementById('LS').style.display = 'none';
+  document.getElementById('app-loading').style.display = 'none';
   document.getElementById('app').classList.add('on');
-  renderSB();renderTB();nav('dashboard');
+  renderSB(); renderTB(); nav('dashboard');
 }
 
 // ══════════════════════════════════════════
 // NAV
 // ══════════════════════════════════════════
-const NAVD=[
+const NAVD = [
   {s:'Principal'},
-  {id:'dashboard',   l:'Tableau de bord',    i:'🏠',r:['pdg','admin','chef','missionnaire','rh','dev']},
+  {id:'dashboard',   l:'Tableau de bord',    i:'🏠', r:['pdg','admin','chef','missionnaire','rh','dev']},
   {s:'Activité'},
-  {id:'annonces',    l:'Annonces',            i:'📣',r:['pdg','admin','chef','missionnaire','rh','dev']},
-  {id:'stats',       l:'Statistiques',        i:'📊',r:['pdg','admin','chef','missionnaire','rh','dev']},
-  {id:'commissions', l:'Commissions',         i:'💰',r:['pdg','admin','chef','missionnaire','rh','dev']},
-  {id:'validation',  l:'Validation rapports', i:'✅',r:['chef','dev'],bd:'pending'},
+  {id:'annonces',    l:'Annonces',            i:'📣', r:['pdg','admin','chef','missionnaire','rh','dev']},
+  {id:'stats',       l:'Statistiques',        i:'📊', r:['pdg','admin','chef','missionnaire','rh','dev']},
+  {id:'commissions', l:'Commissions',         i:'💰', r:['pdg','admin','chef','missionnaire','rh','dev']},
+  {id:'validation',  l:'Validation rapports', i:'✅', r:['chef','dev'], bd:'pending'},
   {s:'Équipe & RH'},
-  {id:'demandes',    l:'Demandes membres',    i:'👤➕',r:['chef','admin','pdg','dev'],bd:'demande'},
-  {id:'suppressions',l:'Suppressions',        i:'👤➖',r:['chef','admin','pdg','dev'],bd:'suppression'},
-  {id:'changements', l:'Changements chef',    i:'🔄',r:['admin','pdg','dev'],bd:'changement'},
-  {id:'recrutement', l:'Recrutement',         i:'🎯',r:['pdg','admin','chef','rh','dev','public']},
-  {id:'equipe',      l:'Mon équipe',          i:'👥',r:['pdg','admin','chef','rh','dev']},
+  {id:'demandes',    l:'Demandes membres',    i:'👤➕',r:['chef','admin','pdg','dev'], bd:'demande'},
+  {id:'suppressions',l:'Suppressions',        i:'👤➖',r:['chef','admin','pdg','dev'], bd:'suppression'},
+  {id:'changements', l:'Changements chef',    i:'🔄', r:['admin','pdg','dev'], bd:'changement'},
+  {id:'recrutement', l:'Recrutement',         i:'🎯', r:['pdg','admin','chef','rh','dev','public']},
+  {id:'equipe',      l:'Mon équipe',          i:'👥', r:['pdg','admin','chef','rh','dev']},
   {s:'Communication'},
-  {id:'plaintes',    l:'Plaintes',            i:'📢',r:['pdg','admin','chef','missionnaire','dev']},
-  {id:'messages',    l:'Messagerie',          i:'✉️',r:['pdg','admin','chef','missionnaire','rh','dev'],bd:'unread'},
+  {id:'plaintes',    l:'Plaintes',            i:'📢', r:['pdg','admin','chef','missionnaire','dev']},
+  {id:'messages',    l:'Messagerie',          i:'✉️', r:['pdg','admin','chef','missionnaire','rh','dev'], bd:'unread'},
   {s:'Administration'},
-  {id:'dev',         l:'Panneau Dev',         i:'⚙️',r:['dev']},
+  {id:'dev',         l:'Panneau Dev',         i:'⚙️', r:['dev']},
 ];
-const PNAMES={
-  dashboard:'Tableau de bord',annonces:'Annonces',stats:'Statistiques',commissions:'Commissions',
-  validation:'Validation des rapports',demandes:'Demandes de membres',suppressions:'Suppressions de membres',
-  changements:'Changements de chef',recrutement:'Recrutement',equipe:'Performance équipe',
-  plaintes:'Plaintes & Réclamations',messages:'Messagerie',dev:'Panneau Développeur'
+const PNAMES = {
+  dashboard:'Tableau de bord', annonces:'Annonces', stats:'Statistiques',
+  commissions:'Commissions', validation:'Validation des rapports',
+  demandes:'Demandes de membres', suppressions:'Suppressions de membres',
+  changements:'Changements de chef', recrutement:'Recrutement',
+  equipe:'Performance équipe', plaintes:'Plaintes & Réclamations',
+  messages:'Messagerie', dev:'Panneau Développeur'
 };
-function renderSB(){
-  if(!CU)return;
-  const r=CU.role;
-  const unread=DB.messages.filter(m=>m.to===CU.id&&!m.lu).length;
-  const pending=DB.stats.filter(s=>s.status==='en attente'&&s.chefId===CU.id).length;
-  const demBadge=r==='admin'||r==='pdg'?DB.demandes.filter(d=>d.statusAdmin==='en attente').length
-    :r==='dev'?DB.demandes.filter(d=>d.statusAdmin==='approuvé'&&d.statusDev==='en attente').length
-    :r==='chef'?DB.demandes.filter(d=>d.chefId===CU.id&&d.statusDev==='approuvé').length:0;
-  const supBadge=r==='dev'?DB.suppressions.filter(s=>s.statusAdmin==='approuvé'&&s.statusDev==='en attente').length
-    :r==='admin'||r==='pdg'?DB.suppressions.filter(s=>s.statusAdmin==='en attente').length
-    :r==='chef'?DB.suppressions.filter(s=>s.chefId===CU.id&&s.statusDev==='en attente').length:0;
-  const chgBadge=r==='dev'?DB.changements.filter(c=>c.statusDev==='en attente').length:0;
-  let h='';
-  NAVD.forEach(n=>{
-    if(n.s){h+=`<div class="sb-sec">${n.s}</div>`;return;}
-    if(!n.r.includes(r))return;
-    const cnt=n.bd==='unread'?unread:n.bd==='pending'?pending:n.bd==='demande'?demBadge:n.bd==='suppression'?supBadge:n.bd==='changement'?chgBadge:0;
-    const bc=n.bd==='unread'?'nbd-b':n.bd==='pending'?'nbd-g':'nbd-r';
-    h+=`<button class="nb ${CP===n.id?'on':''}" onclick="nav('${n.id}')"><span class="ni">${n.i}</span><span>${n.l}</span>${cnt>0?`<span class="nbd ${bc}">${cnt}</span>`:''}</button>`;
+
+function renderSB() {
+  if (!CU) return;
+  const r = CU.role;
+  const unread   = DB.messages.filter(m => m.to === CU.id && !m.lu).length;
+  const pending  = DB.stats.filter(s => s.status === 'en attente' && s.chefId === CU.id).length;
+  const demBadge = r==='admin'||r==='pdg' ? DB.demandes.filter(d=>d.statusAdmin==='en attente').length
+    : r==='dev' ? DB.demandes.filter(d=>d.statusAdmin==='approuvé'&&d.statusDev==='en attente').length
+    : r==='chef' ? DB.demandes.filter(d=>d.chefId===CU.id&&d.statusDev==='approuvé').length : 0;
+  const supBadge = r==='dev' ? DB.suppressions.filter(s=>s.statusDev==='en attente').length
+    : r==='chef' ? DB.suppressions.filter(s=>s.chefId===CU.id&&s.statusDev==='en attente').length : 0;
+  const chgBadge = r==='dev' ? DB.changements.filter(c=>c.statusDev==='en attente').length : 0;
+  let h = '';
+  NAVD.forEach(n => {
+    if (n.s) { h += `<div class="sb-sec">${n.s}</div>`; return; }
+    if (!n.r.includes(r)) return;
+    const cnt = n.bd==='unread'?unread : n.bd==='pending'?pending : n.bd==='demande'?demBadge : n.bd==='suppression'?supBadge : n.bd==='changement'?chgBadge : 0;
+    const bc  = n.bd==='unread'?'nbd-b' : n.bd==='pending'?'nbd-g' : 'nbd-r';
+    h += `<button class="nb ${CP===n.id?'on':''}" data-page="${n.id}"><span class="ni">${n.i}</span><span>${n.l}</span>${cnt>0?`<span class="nbd ${bc}">${cnt}</span>`:''}</button>`;
   });
-  document.getElementById('sb-nav').innerHTML=h;
-  document.getElementById('sb-av').textContent=CU.av;
-  document.getElementById('sb-name').textContent=CU.name;
-  document.getElementById('sb-role').textContent=ROLES[CU.role]||CU.role;
+  document.getElementById('sb-nav').innerHTML = h;
+  // Attacher les events sur les boutons nav
+  document.querySelectorAll('.nb[data-page]').forEach(btn => {
+    btn.addEventListener('click', () => nav(btn.dataset.page));
+  });
+  document.getElementById('sb-av').textContent  = CU.av || '?';
+  document.getElementById('sb-name').textContent = CU.name;
+  document.getElementById('sb-role').textContent = ROLES[CU.role] || CU.role;
 }
-function renderTB(){
-  if(!CU)return;
-  document.getElementById('tb-av').textContent=CU.av;
-  document.getElementById('tb-name').textContent=CU.name;
-  document.getElementById('tb-role').textContent=ROLES[CU.role]||CU.role;
+function renderTB() {
+  if (!CU) return;
+  document.getElementById('tb-av').textContent   = CU.av || '?';
+  document.getElementById('tb-name').textContent = CU.name;
+  document.getElementById('tb-role').textContent = ROLES[CU.role] || CU.role;
 }
-const PAGES={dashboard,annonces,stats,commissions,validation,demandes,suppressions,changements,recrutement,equipe,plaintes,messages,dev:devPanel};
-function nav(page){
-  CP=page;
-  document.getElementById('tb-t').textContent=PNAMES[page]||page;
-  document.getElementById('tb-s').textContent='';
+
+// ══════════════════════════════════════════
+// ROUTER
+// ══════════════════════════════════════════
+const PAGES = {
+  dashboard, annonces, stats, commissions, validation,
+  demandes, suppressions, changements, recrutement, equipe,
+  plaintes, messages, dev: devPanel
+};
+function nav(page) {
+  CP = page;
+  document.getElementById('tb-t').textContent = PNAMES[page] || page;
+  document.getElementById('tb-s').textContent = '';
   renderSB();
-  const fn=PAGES[page];
-  document.getElementById('pg').innerHTML=fn?fn():`<div class="empty">Page non disponible</div>`;
+  const fn = PAGES[page];
+  document.getElementById('pg').innerHTML = fn ? fn() : `<div class="empty">Page non disponible</div>`;
   afterRender(page);
 }
+      </script>
+      <script>
 // ══════════════════════════════════════════
 // DASHBOARD
 // ══════════════════════════════════════════
-function dashboard(){
-  const r=CU.role,uid=CU.id;
+function dashboard() {
+  const r=CU.role, uid=CU.id;
   const valS=DB.stats.filter(s=>s.status==='validé');
   const totalCA=valS.reduce((a,s)=>a+s.montant,0);
   let cards=[];
   if(r==='missionnaire'){
     const c=calcComm(uid);
     cards=[
-      {l:'CA validé ce mois',v:fmt(c.total),i:'💹',c:'var(--fl)'},
-      {l:'Commission estimée',v:fmt(c.commission),i:'💰',c:'var(--gold)'},
+      {l:'Ventes validées ce mois',v:fmt(c.total),i:'💹',c:'var(--fl)'},
+      {l:'Commission estimée',v:fmt(c.commission),i:'💰',c:c.taux===0?'var(--gray400)':c.taux===27?'var(--gold)':'var(--fl)'},
       {l:'Rapports soumis',v:DB.stats.filter(s=>s.userId===uid).length,i:'📋',c:'var(--nm)'},
-      {l:'En attente',v:DB.stats.filter(s=>s.userId===uid&&s.status==='en attente').length,i:'⏳',c:'var(--or)'},
+      {l:'En attente validation',v:DB.stats.filter(s=>s.userId===uid&&s.status==='en attente').length,i:'⏳',c:'var(--or)'},
     ];
-  }else if(r==='chef'){
+  } else if(r==='chef'){
     const ts=DB.stats.filter(s=>s.chefId===uid);
     const tca=ts.filter(s=>s.status==='validé').reduce((a,s)=>a+s.montant,0);
     cards=[
-      {l:'À valider',v:ts.filter(s=>s.status==='en attente').length,i:'⏳',c:'var(--or)'},
+      {l:'Rapports à valider',v:ts.filter(s=>s.status==='en attente').length,i:'⏳',c:'var(--or)'},
       {l:'CA équipe validé',v:fmt(tca),i:'💹',c:'var(--fl)'},
-      {l:'Membres',v:DB.users.filter(u=>u.chefId===uid).length,i:'👥',c:'var(--purple)'},
+      {l:'Membres actifs',v:DB.users.filter(u=>u.chefId===uid&&u.actif).length,i:'👥',c:'var(--purple)'},
       {l:'Plaintes ouvertes',v:DB.plaintes.filter(p=>p.status==='ouvert').length,i:'📢',c:'var(--red)'},
     ];
-  }else{
+  } else {
     const allComm=calcCommAll();
     cards=[
       {l:'CA total validé',v:fmt(totalCA),i:'💹',c:'var(--fl)'},
       {l:'Commissions totales',v:fmt(allComm.reduce((a,c)=>a+c.commission,0)),i:'💰',c:'var(--gold)'},
-      {l:'Missionnaires actifs',v:DB.users.filter(u=>u.role==='missionnaire').length,i:'👥',c:'var(--nm)'},
+      {l:'Agents commerciaux actifs',v:DB.users.filter(u=>u.role==='missionnaire'&&u.actif).length,i:'👥',c:'var(--nm)'},
       {l:'Rapports en attente',v:DB.stats.filter(s=>s.status==='en attente').length,i:'⏳',c:'var(--or)'},
     ];
   }
   const pinned=DB.annonces.filter(a=>a.epingle).slice(0,2);
-  return`<div class="ps">
+  return `<div class="ps">
   <div style="margin-bottom:18px">
     <h3 style="font-size:20px;font-weight:800;color:var(--nm)">Bonjour, ${CU.name.split(' ')[0]} 👋</h3>
     <p style="color:var(--gray600);font-size:13px;margin-top:3px">${today()} — EMS SARL Mission Manager</p>
@@ -566,7 +689,7 @@ function dashboard(){
   <div class="kgrid">${cards.map(c=>`<div class="kpi" style="border-left-color:${c.c}"><div class="ki">${c.i}</div><div class="kv">${c.v}</div><div class="kl">${c.l}</div></div>`).join('')}</div>
   <div class="g2">
     <div>
-      ${pinned.map(a=>`<div class="acard ${a.type}" style="cursor:pointer;margin-bottom:10px" onclick="nav('annonces')">
+      ${pinned.map(a=>`<div class="acard ${a.type}" style="cursor:pointer;margin-bottom:10px" data-nav="annonces">
         <div style="font-weight:800;color:var(--nm);font-size:14px">📌 ${a.titre}</div>
         <div style="font-size:12px;color:var(--gray600);margin-top:4px">${a.contenu.slice(0,90)}…</div>
       </div>`).join('')}
@@ -593,24 +716,25 @@ function dashboard(){
 // ══════════════════════════════════════════
 // ANNONCES
 // ══════════════════════════════════════════
-function annonces(){
+function annonces() {
   const r=CU.role;
   const canCreate=['pdg','admin','chef','dev'].includes(r);
   const sorted=[...DB.annonces].sort((a,b)=>(b.epingle-a.epingle)||(b.date.localeCompare(a.date)));
-  return`<div class="ps">
+  return `<div class="ps">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px">
     <div><h3 style="font-weight:800;color:var(--nm);font-size:18px">Annonces</h3>
     <p style="font-size:13px;color:var(--gray600)">${sorted.length} annonce(s)</p></div>
-    ${canCreate?`<button class="btn bp sm" onclick="showAnnForm()">+ Nouvelle annonce</button>`:''}
+    ${canCreate?`<button class="btn bp sm" id="btn-new-ann">+ Nouvelle annonce</button>`:''}
   </div>
   <div id="ann-fw"></div>
   ${sorted.map(a=>{
-    const aut=uobj(a.auteurId);const canE=CU.id===a.auteurId||r==='dev';
-    return`<div class="acard ${a.type}">
+    const aut=uobj(a.auteurId); const canE=CU.id===a.auteurId||r==='dev';
+    return `<div class="acard ${a.type}">
       <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:7px">
         <div style="font-weight:800;color:var(--nm);font-size:15px">${a.epingle?'📌 ':''}${a.titre}</div>
         <div style="display:flex;gap:6px;align-items:center">${tagH(a.type)}
-          ${canE?`<button class="ib" onclick="togglePin('${a.id}')">${a.epingle?'📌':'📍'}</button><button class="ib" onclick="delAnn('${a.id}')">🗑️</button>`:''}</div>
+          ${canE?`<button class="ib btn-toggle-pin" data-id="${a.id}" data-pin="${a.epingle?'1':'0'}" title="Épingler">${a.epingle?'📌':'📍'}</button>
+                  <button class="ib btn-del-ann" data-id="${a.id}">🗑️</button>`:''}</div>
       </div>
       <div style="font-size:13px;color:var(--gray600);line-height:1.6">${a.contenu}</div>
       <div style="margin-top:9px;display:flex;align-items:center;gap:8px;font-size:11px;color:var(--gray400)">
@@ -619,63 +743,75 @@ function annonces(){
     </div>`;
   }).join('')}</div>`;
 }
-function showAnnForm(){
-  document.getElementById('ann-fw').innerHTML=`<div class="fc">
+
+function bindAnnonces() {
+  const btn = document.getElementById('btn-new-ann');
+  if (btn) btn.addEventListener('click', showAnnForm);
+  document.querySelectorAll('.btn-toggle-pin').forEach(b => {
+    b.addEventListener('click', () => togglePin(b.dataset.id));
+  });
+  document.querySelectorAll('.btn-del-ann').forEach(b => {
+    b.addEventListener('click', () => delAnn(b.dataset.id));
+  });
+}
+
+function showAnnForm() {
+  document.getElementById('ann-fw').innerHTML = `<div class="fc">
     <div class="ft">📣 Nouvelle annonce</div>
     <div class="fg2">
-      <div class="fg"><label class="fl">Titre</label><input id="at" class="fi" placeholder="Titre"></div>
-      <div class="fg"><label class="fl">Type</label><select id="atype" class="fs">${Object.entries(ANN_TYPES).map(([k,v])=>`<option value="${k}">${v}</option>`).join('')}</select></div>
+      <div class="fg"><label class="lbl">Titre</label><input id="at" class="fi" placeholder="Titre"></div>
+      <div class="fg"><label class="lbl">Type</label><select id="atype" class="fs">${Object.entries(ANN_TYPES).map(([k,v])=>`<option value="${k}">${v}</option>`).join('')}</select></div>
     </div>
-    <div class="fg" style="margin-bottom:11px"><label class="fl">Contenu</label><textarea id="ac" class="fta" placeholder="Contenu..."></textarea></div>
+    <div class="fg" style="margin-bottom:11px"><label class="lbl">Contenu</label><textarea id="ac" class="fta" placeholder="Contenu..."></textarea></div>
     <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:12px"><input type="checkbox" id="ap" style="width:15px;height:15px"> 📌 Épingler</label>
-    <div class="fg" style="margin-bottom:13px"><label class="fl">Notifier par email</label>
+    <div class="fg" style="margin-bottom:13px"><label class="lbl">Notifier par email</label>
       <div class="cwrap">${Object.entries(ROLES).filter(([k])=>k!=='public').map(([k,v])=>`<label class="chip"><input type="checkbox" value="${k}" class="ann-roles" checked>${v}</label>`).join('')}</div>
     </div>
     <div class="br">
-      <button class="btn bp sm" onclick="submitAnn()">📣 Publier & Notifier</button>
-      <button class="btn bg sm" onclick="document.getElementById('ann-fw').innerHTML=''">Annuler</button>
+      <button class="btn bp sm" id="btn-submit-ann">📣 Publier & Notifier</button>
+      <button class="btn bg sm" id="btn-cancel-ann">Annuler</button>
     </div>
   </div>`;
   initChips();
+  document.getElementById('btn-submit-ann').addEventListener('click', submitAnn);
+  document.getElementById('btn-cancel-ann').addEventListener('click', () => document.getElementById('ann-fw').innerHTML = '');
 }
-async function submitAnn(){
+
+async function submitAnn() {
   const titre=document.getElementById('at').value.trim();
   const contenu=document.getElementById('ac').value.trim();
-  if(!titre||!contenu)return notify('Titre et contenu requis','er');
+  if (!titre||!contenu) return notify('Titre et contenu requis','er');
   const type=document.getElementById('atype').value;
   const roles=[...document.querySelectorAll('.ann-roles:checked')].map(c=>c.value);
   await fsAdd('annonces',{auteurId:CU.id,date:today(),titre,type,contenu,epingle:document.getElementById('ap').checked});
   const icon={general:'📣',urgent:'🚨',info:'ℹ️',event:'📅'}[type]||'📣';
-  await notifyUsers(roles,`${icon} Nouvelle annonce EMS SARL : ${titre}`,
-    `Bonjour,\n\nUne nouvelle annonce a été publiée :\n\n📌 ${titre}\n\n${contenu}\n\nPublié le ${today()} par ${CU.name}.\n\nCordialement,\nEMS SARL`);
-  notify('Annonce publiée et notifications envoyées !');
+  await notifyUsers(roles,`${icon} EMS SARL : ${titre}`,`Bonjour,\n\nNouvelle annonce :\n\n📌 ${titre}\n\n${contenu}\n\nPublié le ${today()} par ${CU.name}.\n\nEMS SARL`);
+  notify('Annonce publiée !');
   document.getElementById('ann-fw').innerHTML='';
 }
-async function delAnn(id){if(!confirm('Supprimer ?'))return;await fsDelete('annonces',id);}
-async function togglePin(id){const a=DB.annonces.find(a=>a.id===id);if(a)await fsUpdate('annonces',id,{epingle:!a.epingle});}
+async function delAnn(id) { if(!confirm('Supprimer ?'))return; await fsDelete('annonces',id); }
+async function togglePin(id) { const a=DB.annonces.find(a=>a.id===id); if(a) await fsUpdate('annonces',id,{epingle:!a.epingle}); }
 
 // ══════════════════════════════════════════
 // STATS
 // ══════════════════════════════════════════
-function stats(){
-  const r=CU.role,uid=CU.id;
-  if(r==='public')return`<div class="empty"><div class="eico">🔒</div>Accès réservé aux membres</div>`;
-  const visible=r==='missionnaire'?DB.stats.filter(s=>s.userId===uid)
-    :r==='chef'?DB.stats.filter(s=>s.chefId===uid)
-    :DB.stats;
-  return`<div class="ps">
+function stats() {
+  const r=CU.role, uid=CU.id;
+  if (r==='public') return `<div class="empty"><div class="eico">🔒</div>Accès réservé aux membres</div>`;
+  const visible=r==='missionnaire'?DB.stats.filter(s=>s.userId===uid):r==='chef'?DB.stats.filter(s=>s.chefId===uid):DB.stats;
+  return `<div class="ps">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px">
     <div><h3 style="font-weight:800;color:var(--nm);font-size:18px">Statistiques</h3>
     <p style="font-size:13px;color:var(--gray600)">${visible.length} rapport(s)</p></div>
     <div style="display:flex;gap:8px;flex-wrap:wrap">
-      ${(r==='missionnaire'||r==='dev')?`<button class="btn bp sm" onclick="showStatForm()">+ Nouveau rapport</button>`:''}
-      <button class="btn bg sm" onclick="showPDFFilter()">📄 Export PDF</button>
+      ${(r==='missionnaire'||r==='dev')?`<button class="btn bp sm" id="btn-new-stat">+ Nouveau rapport</button>`:''}
+      <button class="btn bg sm" id="btn-show-pdf-filter">📄 Export PDF</button>
     </div>
   </div>
   <div id="pdf-filter-wrap"></div>
   <div id="sf-wrap"></div>
   <div class="tw"><table><thead><tr>
-    <th>Date</th><th>Missionnaire</th><th>Visites</th><th>Prospects</th><th>Montant</th><th>Zone</th><th>Produits</th><th>Statut</th>
+    <th>Date</th><th>Agent</th><th>Visites</th><th>Prospects</th><th>Montant</th><th>Zone</th><th>Produits</th><th>Statut</th>
   </tr></thead><tbody>
   ${visible.length===0?`<tr><td colspan="8"><div class="empty"><div class="eico">📭</div>Aucun rapport</div></td></tr>`:''}
   ${visible.map(s=>{const u=uobj(s.userId);return`<tr>
@@ -689,62 +825,79 @@ function stats(){
   </tr>`;}).join('')}
   </tbody></table></div></div>`;
 }
-function showPDFFilter(){
-  document.getElementById('pdf-filter-wrap').innerHTML=`<div class="fc" style="border-top-color:var(--blue)">
-    <div class="ft">📄 Export PDF — Choisir la période</div>
+
+function bindStats() {
+  const btnS = document.getElementById('btn-new-stat');
+  if (btnS) btnS.addEventListener('click', () => showStatForm());
+  const btnP = document.getElementById('btn-show-pdf-filter');
+  if (btnP) btnP.addEventListener('click', showPDFFilter);
+}
+
+function showPDFFilter() {
+  document.getElementById('pdf-filter-wrap').innerHTML = `<div class="fc" style="border-top-color:var(--blue)">
+    <div class="ft">📄 Export PDF — Période</div>
     <div style="display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap">
-      <button class="btn bb sm" id="pdf-m-btn" onclick="setPDFMode('mois')">Par mois</button>
-      <button class="btn bg sm" id="pdf-p-btn" onclick="setPDFMode('plage')">Par plage de dates</button>
+      <button class="btn bb sm" id="pdf-m-btn">Par mois</button>
+      <button class="btn bg sm" id="pdf-p-btn">Par plage de dates</button>
     </div>
-    <div id="pdf-mode-mois"><div class="fg"><label class="fl">Mois</label><input type="month" id="pdf-mois" class="fi" value="${currentMonth()}"></div></div>
+    <div id="pdf-mode-mois"><div class="fg"><label class="lbl">Mois</label><input type="month" id="pdf-mois" class="fi" value="${currentMonth()}"></div></div>
     <div id="pdf-mode-plage" style="display:none"><div class="fg2">
-      <div class="fg"><label class="fl">Du</label><input type="date" id="pdf-du" class="fi"></div>
-      <div class="fg"><label class="fl">Au</label><input type="date" id="pdf-au" class="fi"></div>
+      <div class="fg"><label class="lbl">Du</label><input type="date" id="pdf-du" class="fi"></div>
+      <div class="fg"><label class="lbl">Au</label><input type="date" id="pdf-au" class="fi"></div>
     </div></div>
     <div class="br" style="margin-top:12px">
-      <button class="btn bp sm" onclick="exportPDFRapportsFiltres()">📄 Générer PDF</button>
-      <button class="btn bg sm" onclick="document.getElementById('pdf-filter-wrap').innerHTML=''">Annuler</button>
+      <button class="btn bp sm" id="btn-gen-pdf">📄 Générer PDF</button>
+      <button class="btn bg sm" id="btn-cancel-pdf">Annuler</button>
     </div>
   </div>`;
+  document.getElementById('pdf-m-btn').addEventListener('click', () => setPDFMode('mois'));
+  document.getElementById('pdf-p-btn').addEventListener('click', () => setPDFMode('plage'));
+  document.getElementById('btn-gen-pdf').addEventListener('click', exportPDFRapportsFiltres);
+  document.getElementById('btn-cancel-pdf').addEventListener('click', () => document.getElementById('pdf-filter-wrap').innerHTML='');
 }
-function setPDFMode(m){
+
+function setPDFMode(m) {
   pdfMode=m;
   document.getElementById('pdf-mode-mois').style.display=m==='mois'?'block':'none';
   document.getElementById('pdf-mode-plage').style.display=m==='plage'?'block':'none';
   document.getElementById('pdf-m-btn').className=m==='mois'?'btn bb sm':'btn bg sm';
   document.getElementById('pdf-p-btn').className=m==='plage'?'btn bb sm':'btn bg sm';
 }
-function showStatForm(uid2=null){
-  const uid=uid2||CU.id;const u=uobj(uid);
-  document.getElementById('sf-wrap').innerHTML=`<div class="fc">
+
+function showStatForm(uid2=null) {
+  const uid=uid2||CU.id; const u=uobj(uid);
+  document.getElementById('sf-wrap').innerHTML = `<div class="fc">
     <div class="ft">📋 Nouveau rapport${u&&u.id!==CU.id?' — '+u.name:''}</div>
     <div class="fg2">
-      <div class="fg"><label class="fl">Date</label><input type="date" id="sf-d" class="fi" value="${today()}"></div>
-      <div class="fg"><label class="fl">Visites</label><input type="number" id="sf-v" class="fi" placeholder="12" min="0"></div>
-      <div class="fg"><label class="fl">Prospects</label><input type="number" id="sf-p" class="fi" placeholder="8" min="0"></div>
-      <div class="fg"><label class="fl">Montant (FCFA)</label><input type="number" id="sf-m" class="fi" placeholder="145000" min="0"></div>
-      <div class="fg"><label class="fl">Zone</label><select id="sf-z" class="fs"><option value="">— Choisir —</option>${ZONES.map(z=>`<option>${z}</option>`).join('')}</select></div>
+      <div class="fg"><label class="lbl">Date</label><input type="date" id="sf-d" class="fi" value="${today()}"></div>
+      <div class="fg"><label class="lbl">Visites</label><input type="number" id="sf-v" class="fi" placeholder="12" min="0"></div>
+      <div class="fg"><label class="lbl">Prospects</label><input type="number" id="sf-p" class="fi" placeholder="8" min="0"></div>
+      <div class="fg"><label class="lbl">Montant (FCFA)</label><input type="number" id="sf-m" class="fi" placeholder="145000" min="0"></div>
+      <div class="fg"><label class="lbl">Zone</label><select id="sf-z" class="fs"><option value="">— Choisir —</option>${ZONES.map(z=>`<option>${z}</option>`).join('')}</select></div>
     </div>
-    <div class="fg" style="margin-bottom:13px"><label class="fl">Produits vendus</label>
+    <div class="fg" style="margin-bottom:13px"><label class="lbl">Produits vendus</label>
       <div class="cwrap">${PRODUCTS.map(p=>`<label class="chip"><input type="checkbox" value="${p}" class="sf-pr">${p}</label>`).join('')}</div>
     </div>
     <input type="hidden" id="sf-uid" value="${uid}">
-    <div class="br"><button class="btn bs sm" onclick="submitStat()">💾 Soumettre</button><button class="btn bg sm" onclick="document.getElementById('sf-wrap').innerHTML=''">Annuler</button></div>
+    <div class="br">
+      <button class="btn bs sm" id="btn-submit-stat">💾 Soumettre</button>
+      <button class="btn bg sm" id="btn-cancel-stat">Annuler</button>
+    </div>
   </div>`;
   initChips();
+  document.getElementById('btn-submit-stat').addEventListener('click', submitStat);
+  document.getElementById('btn-cancel-stat').addEventListener('click', () => document.getElementById('sf-wrap').innerHTML='');
 }
-async function submitStat(){
-  const d=document.getElementById('sf-d').value,v=+document.getElementById('sf-v').value;
-  const p=+document.getElementById('sf-p').value,m=+document.getElementById('sf-m').value;
-  const z=document.getElementById('sf-z').value,uid=document.getElementById('sf-uid').value;
+
+async function submitStat() {
+  const d=document.getElementById('sf-d').value, v=+document.getElementById('sf-v').value;
+  const p=+document.getElementById('sf-p').value, m=+document.getElementById('sf-m').value;
+  const z=document.getElementById('sf-z').value, uid=document.getElementById('sf-uid').value;
   const prods=[...document.querySelectorAll('.sf-pr:checked')].map(c=>c.value);
-  if(!d||!v||!m||!z||!prods.length)return notify('Remplissez tous les champs','er');
+  if (!d||!v||!m||!z||!prods.length) return notify('Remplissez tous les champs','er');
   const tu=uobj(uid);
   await fsAdd('stats',{userId:uid,chefId:tu?.chefId||null,date:d,visites:v,prospects:p,montant:m,zone:z,produits:prods,status:'en attente',note:''});
-  if(tu?.chefId){
-    await notifyUser(tu.chefId,`📋 Nouveau rapport de ${tu.name}`,
-      `Bonjour,\n\nUn nouveau rapport attend votre validation.\n\n👤 ${tu.name}\n📅 ${d}\n💰 ${fmt(m)}\n📍 ${z}\n📦 ${prods.join(', ')}\n\nCordialement,\nEMS SARL`);
-  }
+  if (tu?.chefId) await notifyUser(tu.chefId,`📋 Nouveau rapport de ${tu.name}`,`Bonjour,\n\nNouveau rapport à valider :\n\n👤 ${tu.name}\n📅 ${d}\n💰 ${fmt(m)}\n📍 ${z}\n📦 ${prods.join(', ')}\n\nEMS SARL`);
   notify('Rapport soumis ! Chef notifié.');
   document.getElementById('sf-wrap').innerHTML='';
 }
@@ -752,1097 +905,59 @@ async function submitStat(){
 // ══════════════════════════════════════════
 // COMMISSIONS
 // ══════════════════════════════════════════
-function commissions(){
-  const r=CU.role;const month=currentMonth();
-  if(r==='public')return`<div class="empty"><div class="eico">🔒</div>Accès réservé</div>`;
-  if(r==='missionnaire'){
+function commissions() {
+  const r=CU.role; const month=currentMonth();
+  if (r==='public') return `<div class="empty"><div class="eico">🔒</div>Accès réservé</div>`;
+  if (r==='missionnaire') {
     const c=calcComm(CU.id,month);
-    return`<div class="ps">
-    <div class="comm-card">
+    return `<div class="ps">
+    <div class="comm-card" style="background:linear-gradient(135deg,${c.taux===0?'#6b7280,#9ca3af':c.taux===27?'#c9963a,#f5c842':'#1e3a5f,#2e8b57'})">
       <div style="font-size:13px;opacity:.7;margin-bottom:4px">Votre commission — ${month}</div>
       <div class="comm-rate">${fmt(c.commission)}</div>
       <div class="comm-label">${c.taux}% sur ${fmt(c.total)} validé · ${c.palier}</div>
     </div>
-    <div class="g2">
-      <div class="card"><div class="ct">Paliers de commission</div>
-        ${COMM_PALIERS.map(p=>`<div style="display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--gray50)">
-          <div><div style="font-weight:700;color:var(--nm);font-size:13px">${p.label}</div>
-          <div style="font-size:11px;color:var(--gray600)">${fmt(p.min)} – ${p.max===Infinity?'∞':fmt(p.max)}</div></div>
-          <div style="font-size:18px;font-weight:800;color:${palierColor(p.label)}">${p.taux}%</div>
-        </div>`).join('')}
-      </div>
-      <div class="card"><div class="ct">Historique mensuel</div>
-        ${['2026-03','2026-02','2026-01'].map(mo=>{const c=calcComm(CU.id,mo);return`<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--gray50)">
-          <div><div style="font-weight:700;color:var(--nm)">${mo}</div><div style="font-size:11px;color:var(--gray600)">${c.palier}</div></div>
-          <div style="text-align:right"><div style="font-weight:800;color:var(--gold)">${fmt(c.commission)}</div><div style="font-size:11px;color:var(--gray600)">${c.taux}%</div></div>
-        </div>`;}).join('')}
-      </div>
+    <div class="card" style="margin-bottom:16px;border-top:3px solid var(--gold)">
+      <div class="ct">💡 Barème des commissions EMS SARL</div>
+      <div style="overflow-x:auto"><table>
+        <thead><tr><th>Ventes réalisées</th><th>Taux</th><th>Exemple</th><th>Statut</th></tr></thead>
+        <tbody>
+          <tr style="${c.taux===0?'background:var(--grl)':''}">
+            <td style="font-weight:700">Moins de 100 000 FCFA</td>
+            <td><span style="font-weight:800;color:#9ca3af;font-size:15px">0%</span></td>
+            <td style="font-size:12px;color:var(--gray600)">80 000 FCFA → 0 FCFA</td>
+            <td>${c.taux===0?`<span class="tag tg">✓ Votre palier</span>`:'—'}</td>
+          </tr>
+          <tr style="${c.taux===18?'background:var(--grl)':''}">
+            <td style="font-weight:700">100 000 – 252 499 FCFA</td>
+            <td><span style="font-weight:800;color:var(--fl);font-size:15px">18%</span></td>
+            <td style="font-size:12px;color:var(--gray600)">150 000 FCFA → 27 000 FCFA</td>
+            <td>${c.taux===18?`<span class="tag tg">✓ Votre palier</span>`:'—'}</td>
+          </tr>
+          <tr style="${c.taux===27?'background:var(--orl)':''}">
+            <td style="font-weight:700">252 500 FCFA et plus</td>
+            <td><span style="font-weight:800;color:var(--gold);font-size:15px">27%</span></td>
+            <td style="font-size:12px;color:var(--gray600)">300 000 FCFA → 81 000 FCFA</td>
+            <td>${c.taux===27?`<span class="tag tgo">⭐ Votre palier</span>`:'—'}</td>
+          </tr>
+        </tbody>
+      </table></div>
+      ${c.taux===0&&c.total>0?`<div style="margin-top:10px;background:var(--orl);border-radius:var(--rs);padding:10px 12px;font-size:12px;color:var(--or)">💪 Il vous reste <strong>${fmt(100000-c.total)}</strong> à vendre pour débloquer 18% !</div>`:''}
+      ${c.taux===18?`<div style="margin-top:10px;background:var(--grl);border-radius:var(--rs);padding:10px 12px;font-size:12px;color:#15803d">🚀 Il vous reste <strong>${fmt(252500-c.total)}</strong> pour atteindre le taux Premium 27% !</div>`:''}
+      ${c.taux===27?`<div style="margin-top:10px;background:var(--orl);border-radius:var(--rs);padding:10px 12px;font-size:12px;color:var(--or)">⭐ Félicitations ! Vous êtes au taux maximum de 27% ce mois !</div>`:''}
+    </div>
+    <div class="card"><div class="ct">📅 Historique mensuel</div>
+      ${['2026-03','2026-02','2026-01'].map(mo=>{const cm=calcComm(CU.id,mo);return`<div style="display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--gray50)">
+        <div><div style="font-weight:700;color:var(--nm)">${mo}</div><div style="font-size:11px;color:var(--gray600)">${cm.palier}</div></div>
+        <div style="text-align:right"><div style="font-weight:800;color:${cm.taux===27?'var(--gold)':cm.taux===18?'var(--fl)':'var(--gray400)'};font-size:15px">${fmt(cm.commission)}</div>
+        <div style="font-size:11px;color:var(--gray600)">${cm.taux}% sur ${fmt(cm.total)}</div></div>
+      </div>`;}).join('')}
     </div></div>`;
   }
-  const all=calcCommAll(month);const total=all.reduce((a,c)=>a+c.commission,0);
-  return`<div class="ps">
+  const all=calcCommAll(month); const total=all.reduce((a,c)=>a+c.commission,0); const totalV=all.reduce((a,c)=>a+c.total,0);
+  return `<div class="ps">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px">
-    <div><h3 style="font-weight:800;color:var(--nm);font-size:18px">Commissions — ${month}</h3>
-    <p style="font-size:13px;color:var(--gray600)">Total : <strong>${fmt(total)}</strong></p></div>
-    <button class="btn bg sm" onclick="exportPDFCommissions()">📄 Export PDF</button>
+    <div><h3 style="font-weight:800;color:var(--nm);font-size:18px">Commissions agents — ${month}</h3>
+    <p style="font-size:13px;color:var(--gray600)">À payer : <strong>${fmt(total)}</strong> · Ventes : <strong>${fmt(totalV)}</strong></p></div>
+    <button class="btn bg sm" id="btn-pdf-comm">📄 Export PDF</button>
   </div>
-  <div class="tw"><table><thead><tr><th>Missionnaire</th><th>Équipe</th><th>CA validé</th><th>Taux</th><th>Commission</th><th>Palier</th></tr></thead><tbody>
-  ${all.map(c=>`<tr>
-    <td><div style="display:flex;align-items:center;gap:8px">${avH(c.user,24)}<span style="font-weight:700;color:var(--nm)">${c.user.name}</span></div></td>
-    <td style="font-size:12px;color:var(--gray600)">${c.user.team||'—'}</td>
-    <td style="font-weight:700">${fmt(c.total)}</td>
-    <td><span style="font-weight:800;color:${palierColor(c.palier)}">${c.taux}%</span></td>
-    <td style="font-weight:800;color:var(--gold);font-size:15px">${fmt(c.commission)}</td>
-    <td><span class="tag" style="background:${palierColor(c.palier)}22;color:${palierColor(c.palier)}">${c.palier}</span></td>
-  </tr>`).join('')}
-  <tr style="background:var(--gray50)"><td colspan="4" style="font-weight:800;color:var(--nm)">TOTAL</td>
-    <td style="font-weight:800;color:var(--gold);font-size:15px">${fmt(total)}</td><td></td>
-  </tr>
-  </tbody></table></div></div>`;
-}
-// ══════════════════════════════════════════
-// VALIDATION
-// ══════════════════════════════════════════
-function validation(){
-  const pending=DB.stats.filter(s=>s.status==='en attente'&&s.chefId===CU.id);
-  if(!pending.length)return`<div class="ps"><div class="card"><div class="empty"><div class="eico">✅</div>Tous les rapports sont traités !</div></div></div>`;
-  return`<div class="ps">
-  <p style="color:var(--gray600);font-size:13px;margin-bottom:16px">${pending.length} rapport(s) en attente</p>
-  ${pending.map(s=>{const u=uobj(s.userId);return`<div style="background:var(--white);border-radius:var(--r);padding:17px;margin-bottom:13px;box-shadow:var(--sh)">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:7px">
-      <div style="display:flex;align-items:center;gap:9px">${avH(u,36)}
-        <div><div style="font-weight:800;color:var(--nm)">${u?u.name:'—'}</div>
-        <div style="font-size:12px;color:var(--gray600)">${s.date} · ${s.zone}</div></div>
-      </div>${tagH(s.status)}
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:12px">
-      ${[['🚶 Visites',s.visites],['🎯 Prospects',s.prospects],['💰 Montant',fmt(s.montant)],['📦 Produits',s.produits.length]].map(([l,v])=>`<div style="background:var(--gray50);border-radius:var(--rs);padding:8px 10px"><div style="font-size:10px;color:var(--gray600)">${l}</div><div style="font-weight:800;color:var(--nm);font-size:13px;margin-top:1px">${v}</div></div>`).join('')}
-    </div>
-    <div style="font-size:12px;color:var(--gray600);margin-bottom:9px">📦 ${s.produits.join(', ')}</div>
-    <input class="fi" id="note-${s.id}" placeholder="Motif de rejet (obligatoire si rejet)" style="margin-bottom:8px">
-    <div class="br">
-      <button class="btn bs sm" onclick="doVal('${s.id}',true)">✅ Valider</button>
-      <button class="btn bd sm" onclick="doVal('${s.id}',false)">❌ Rejeter</button>
-    </div>
-  </div>`;}).join('')}</div>`;
-}
-async function doVal(id,ok){
-  const note=document.getElementById('note-'+id)?.value||'';
-  if(!ok&&!note)return notify('Motif de rejet requis','er');
-  const s=DB.stats.find(s=>s.id===id);
-  await fsUpdate('stats',id,{status:ok?'validé':'rejeté',note});
-  if(s){
-    await notifyUser(s.userId,
-      ok?`✅ Rapport validé — ${s.date}`:`❌ Rapport rejeté — ${s.date}`,
-      ok?`Bonjour ${uname(s.userId)},\n\nVotre rapport du ${s.date} (${fmt(s.montant)}) a été validé par ${CU.name}.\n\nBravo !\n\nEMS SARL`
-        :`Bonjour ${uname(s.userId)},\n\nVotre rapport du ${s.date} a été rejeté.\n\nMotif : ${note}\n\nEMS SARL`);
-  }
-  notify(ok?'Rapport validé ✅ — Missionnaire notifié':'Rapport rejeté — Missionnaire notifié',ok?'ok':'er');
-}
-
-// ══════════════════════════════════════════
-// DEMANDES MEMBRES
-// ══════════════════════════════════════════
-function demandes(){
-  const r=CU.role;
-  const visible=r==='chef'?DB.demandes.filter(d=>d.chefId===CU.id)
-    :r==='admin'||r==='pdg'?DB.demandes.filter(d=>d.statusAdmin==='en attente')
-    :DB.demandes;
-  return`<div class="ps">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px">
-    <div><h3 style="font-weight:800;color:var(--nm);font-size:18px">Demandes d'ajout de membres</h3>
-    <p style="font-size:13px;color:var(--gray600)">${visible.length} demande(s)</p></div>
-    ${r==='chef'?`<button class="btn bp sm" onclick="showDemandeForm()">+ Nouvelle demande</button>`:''}
-  </div>
-  <div id="dem-fw"></div>
-  <div class="card" style="margin-bottom:16px"><div class="ct">🔄 Circuit d'approbation</div>
-    <div class="wfs">
-      <div class="wfst wfd">1. Chef soumet</div><div class="wfa">→</div>
-      <div class="wfst ${r==='admin'||r==='pdg'?'wfp':'wfd'}">2. DG/PDG approuve</div><div class="wfa">→</div>
-      <div class="wfst ${r==='dev'?'wfp':'wfw'}">3. Dev active</div>
-    </div>
-  </div>
-  ${visible.length===0?`<div class="card"><div class="empty"><div class="eico">📭</div>Aucune demande</div></div>`:''}
-  ${visible.map(d=>{
-    const chef=uobj(d.chefId);
-    const canActivate=r==='dev'&&d.statusAdmin==='approuvé'&&d.statusDev==='en attente';
-    const canApprove=(r==='admin'||r==='pdg')&&d.statusAdmin==='en attente';
-    return`<div style="background:var(--white);border-radius:var(--r);padding:17px;margin-bottom:12px;box-shadow:var(--sh);border-left:4px solid ${d.statusDev==='approuvé'?'var(--fl)':d.statusAdmin==='approuvé'?'var(--gold)':'var(--blue)'}">
-      <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:10px">
-        <div>
-          <div style="font-weight:800;color:var(--nm);font-size:15px">${d.nom}</div>
-          <div style="font-size:12px;color:var(--gray600);margin-top:2px">${d.email} · ${d.tel} · ${d.zone}</div>
-          <div style="font-size:12px;color:var(--gray600);margin-top:3px">Chef : <strong>${chef?chef.name:'—'}</strong> · Équipe : <strong>${chef?chef.team:'—'}</strong> · ${d.date}</div>
-          ${d.note?`<div style="font-size:12px;background:var(--gray50);padding:7px 9px;border-radius:var(--rs);margin-top:6px">"${d.note}"</div>`:''}
-        </div>
-        <div style="display:flex;flex-direction:column;gap:4px;align-items:flex-end">
-          <span style="font-size:11px">Admin : ${tagH(d.statusAdmin)}</span>
-          <span style="font-size:11px">Dev : ${tagH(d.statusDev)}</span>
-        </div>
-      </div>
-      ${canApprove?`<div class="br" style="margin-top:11px">
-        <button class="btn bs sm" onclick="approuver('${d.id}',true)">✅ Approuver</button>
-        <button class="btn bd sm" onclick="approuver('${d.id}',false)">❌ Refuser</button>
-      </div>`:''}
-      ${canActivate?`<div class="br" style="margin-top:11px">
-        <button class="btn bgo sm" onclick="activerProfil('${d.id}')">⚡ Activer le profil</button>
-        <button class="btn bd sm" onclick="refuserDev('${d.id}')">❌ Refuser</button>
-      </div>`:''}
-    </div>`;
-  }).join('')}</div>`;
-}
-function showDemandeForm(){
-  document.getElementById('dem-fw').innerHTML=`<div class="fc">
-    <div class="ft">👤➕ Nouvelle demande d'intégration</div>
-    <div class="fg2">
-      <div class="fg"><label class="fl">Nom complet</label><input id="dm-n" class="fi" placeholder="Prénom Nom"></div>
-      <div class="fg"><label class="fl">Email</label><input id="dm-e" class="fi" type="email" placeholder="email@ems.bj"></div>
-      <div class="fg"><label class="fl">Téléphone</label><input id="dm-t" class="fi" placeholder="97000000"></div>
-      <div class="fg"><label class="fl">Zone</label><select id="dm-z" class="fs"><option value="">—</option>${ZONES.map(z=>`<option>${z}</option>`).join('')}</select></div>
-    </div>
-    <div class="fg" style="margin-bottom:13px"><label class="fl">Justification</label><textarea id="dm-no" class="fta" placeholder="Motivations..."></textarea></div>
-    <div style="background:var(--bl);border-radius:var(--rs);padding:9px 12px;margin-bottom:12px;font-size:12px;color:var(--blue)">
-      ℹ️ Le missionnaire sera automatiquement intégré dans votre équipe (<strong>${CU.team||'votre équipe'}</strong>) une fois activé.
-    </div>
-    <div class="br">
-      <button class="btn bp sm" onclick="submitDemande()">📨 Soumettre</button>
-      <button class="btn bg sm" onclick="document.getElementById('dem-fw').innerHTML=''">Annuler</button>
-    </div>
-  </div>`;
-}
-async function submitDemande(){
-  const nom=document.getElementById('dm-n').value.trim(),email=document.getElementById('dm-e').value.trim();
-  const tel=document.getElementById('dm-t').value.trim(),zone=document.getElementById('dm-z').value;
-  const note=document.getElementById('dm-no').value.trim();
-  if(!nom||!email||!zone)return notify('Nom, email et zone obligatoires','er');
-  await fsAdd('demandes',{chefId:CU.id,chefTeam:CU.team||'',date:today(),nom,email,tel,zone,note,statusAdmin:'en attente',statusDev:'en attente',adminDate:null,devDate:null});
-  await notifyUsers(['admin','pdg'],`👤 Nouvelle demande d'intégration — ${nom}`,
-    `Bonjour,\n\nLe chef ${CU.name} (${CU.team||'—'}) soumet une demande pour :\n\n👤 ${nom}\n📧 ${email}\n📞 ${tel}\n📍 ${zone}\n📝 ${note||'—'}\n\nConnectez-vous pour approuver.\n\nEMS SARL`);
-  notify('Demande soumise ! DG et PDG notifiés.');
-  document.getElementById('dem-fw').innerHTML='';
-}
-async function approuver(id,ok){
-  const d=DB.demandes.find(d=>d.id===id);
-  await fsUpdate('demandes',id,{statusAdmin:ok?'approuvé':'refusé',adminDate:today()});
-  if(d){
-    const chef=uobj(d.chefId);
-    await notifyUser(d.chefId,ok?`✅ Demande approuvée — ${d.nom}`:`❌ Demande refusée — ${d.nom}`,
-      ok?`Bonjour ${chef?chef.name:''},\n\nVotre demande pour ${d.nom} a été approuvée par ${CU.name}.\nLe Dev va activer le profil.\n\nEMS SARL`
-        :`Bonjour ${chef?chef.name:''},\n\nVotre demande pour ${d.nom} a été refusée par ${CU.name}.\n\nEMS SARL`);
-    if(ok) await notifyUsers(['dev'],`⚡ Profil à activer — ${d.nom}`,
-      `Bonjour,\n\n${d.nom} (${d.email}) approuvé par ${CU.name}.\nÉquipe cible : ${d.chefTeam||'—'}\n\nActivez le profil dans le panneau Dev.\n\nEMS SARL`);
-  }
-  notify(ok?'Approuvée ✅ — Parties notifiées':'Refusée — Chef notifié',ok?'ok':'er');
-}
-async function refuserDev(id){
-  await fsUpdate('demandes',id,{statusDev:'refusé',devDate:today()});
-  notify('Demande refusée par le Dev');
-}
-async function activerProfil(id){
-  const d=DB.demandes.find(d=>d.id===id);
-  if(!d||d.statusAdmin!=='approuvé')return notify('En attente approbation','er');
-  const chef=uobj(d.chefId);
-  // Intégrer automatiquement dans l'équipe du chef demandeur
-  const equipe=d.chefTeam||chef?.team||'—';
-  const av=d.nom.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
-  const newId=String(Date.now());
-  await setDoc(doc(db,'users',newId),{
-    id:newId,name:d.nom,email:d.email,role:'missionnaire',
-    av,team:equipe,chefId:d.chefId,actif:true
-  });
-  await fsUpdate('demandes',id,{statusDev:'approuvé',devDate:today()});
-  // Email de bienvenue
-  await sendMail(d.email,d.nom,`🎉 Bienvenue dans EMS SARL — Compte activé`,
-    `Bonjour ${d.nom},\n\nVotre compte EMS SARL Mission Manager est activé !\n\n📧 Email : ${d.email}\n🏢 Équipe : ${equipe}\n👤 Chef : ${chef?chef.name:'—'}\n\nConnectez-vous maintenant sur la plateforme.\n\nBienvenue dans l'équipe !\nEMS SARL`);
-  await notifyUser(d.chefId,`✅ ${d.nom} intégré dans ${equipe}`,
-    `Bonjour ${chef?chef.name:''},\n\n${d.nom} a bien été ajouté à votre équipe ${equipe}.\n\nEMS SARL`);
-  notify(`Profil ${d.nom} activé dans ${equipe} !`,'ok');
-}
-
-// ══════════════════════════════════════════
-// SUPPRESSIONS DE MEMBRES
-// ══════════════════════════════════════════
-function suppressions(){
-  const r=CU.role;
-  const visible=r==='chef'?DB.suppressions.filter(s=>s.chefId===CU.id)
-    :r==='admin'||r==='pdg'?DB.suppressions
-    :DB.suppressions;
-  return`<div class="ps">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px">
-    <div><h3 style="font-weight:800;color:var(--nm);font-size:18px">Suppressions de membres</h3>
-    <p style="font-size:13px;color:var(--gray600)">${visible.length} demande(s)</p></div>
-    ${r==='chef'?`<button class="btn bd sm" onclick="showSuppressionForm()">👤➖ Demander une suppression</button>`:''}
-  </div>
-  <div id="sup-fw"></div>
-  <div class="card" style="margin-bottom:16px"><div class="ct">🔄 Circuit de suppression</div>
-    <div class="wfs">
-      <div class="wfst wfd">1. Chef soumet</div><div class="wfa">→</div>
-      <div class="wfst ${r==='dev'?'wfp':'wfw'}">2. Dev approuve & supprime</div>
-    </div>
-    <div style="font-size:12px;color:var(--or);background:var(--orl);padding:8px 10px;border-radius:var(--rs);margin-top:10px">
-      ⚠️ La suppression est définitive et entraîne la désactivation du compte.
-    </div>
-  </div>
-  ${visible.length===0?`<div class="card"><div class="empty"><div class="eico">✅</div>Aucune demande de suppression</div></div>`:''}
-  ${visible.map(s=>{
-    const membre=uobj(s.membreId)||{name:s.membreNom,av:'?'};
-    const chef=uobj(s.chefId);
-    const canExec=r==='dev'&&s.statusDev==='en attente';
-    return`<div style="background:var(--white);border-radius:var(--r);padding:17px;margin-bottom:12px;box-shadow:var(--sh);border-left:4px solid ${s.statusDev==='approuvé'?'var(--fl)':s.statusDev==='refusé'?'var(--red)':'var(--or)'}">
-      <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:10px">
-        <div>
-          <div style="font-weight:800;color:var(--nm);font-size:15px">🗑️ ${s.membreNom}</div>
-          <div style="font-size:12px;color:var(--gray600);margin-top:2px">Équipe : ${s.membreTeam||'—'} · Demandé par : ${chef?chef.name:'—'}</div>
-          <div style="font-size:12px;color:var(--gray600);margin-top:3px">Date : ${s.date}</div>
-          <div style="font-size:12px;background:var(--orl);padding:7px 9px;border-radius:var(--rs);margin-top:6px;color:var(--or)">
-            Motif : ${s.motif}
-          </div>
-        </div>
-        <div>${tagH(s.statusDev)}</div>
-      </div>
-      ${canExec?`<div class="br" style="margin-top:11px">
-        <button class="btn bd sm" onclick="executerSuppression('${s.id}')">🗑️ Confirmer suppression</button>
-        <button class="btn bg sm" onclick="refuserSuppression('${s.id}')">❌ Refuser</button>
-      </div>`:''}
-    </div>`;
-  }).join('')}</div>`;
-}
-function showSuppressionForm(){
-  const membres=DB.users.filter(u=>u.chefId===CU.id&&u.role==='missionnaire');
-  if(!membres.length)return notify("Vous n'avez aucun membre dans votre équipe",'er');
-  document.getElementById('sup-fw').innerHTML=`<div class="fc" style="border-top-color:var(--red)">
-    <div class="ft">👤➖ Demande de suppression d'un membre</div>
-    <div class="fg" style="margin-bottom:10px"><label class="fl">Membre à supprimer</label>
-      <select id="sup-mid" class="fs">
-        <option value="">— Choisir un membre —</option>
-        ${membres.map(m=>`<option value="${m.id}">${m.name} (${m.team||'—'})</option>`).join('')}
-      </select>
-    </div>
-    <div class="fg" style="margin-bottom:13px"><label class="fl">Motif de suppression</label>
-      <textarea id="sup-motif" class="fta" placeholder="Raison de la suppression (fin de mission, faute, départ volontaire...)"></textarea>
-    </div>
-    <div style="background:var(--rl);border-radius:var(--rs);padding:9px 12px;margin-bottom:12px;font-size:12px;color:var(--red)">
-      ⚠️ Cette demande sera traitée par le Développeur. La suppression est irréversible.
-    </div>
-    <div class="br">
-      <button class="btn bd sm" onclick="submitSuppression()">📨 Soumettre la demande</button>
-      <button class="btn bg sm" onclick="document.getElementById('sup-fw').innerHTML=''">Annuler</button>
-    </div>
-  </div>`;
-}
-async function submitSuppression(){
-  const membreId=document.getElementById('sup-mid').value;
-  const motif=document.getElementById('sup-motif').value.trim();
-  if(!membreId||!motif)return notify('Sélectionnez un membre et indiquez un motif','er');
-  const membre=uobj(membreId);
-  if(!membre)return notify('Membre introuvable','er');
-  await fsAdd('suppressions',{
-    chefId:CU.id,membreId,membreNom:membre.name,membreEmail:membre.email,
-    membreTeam:membre.team||'—',motif,date:today(),statusDev:'en attente'
-  });
-  await notifyUsers(['dev'],`🗑️ Demande de suppression — ${membre.name}`,
-    `Bonjour,\n\nLe chef ${CU.name} demande la suppression du compte de ${membre.name}.\n\nMotif : ${motif}\nÉquipe : ${membre.team||'—'}\n\nConnectez-vous pour traiter cette demande.\n\nEMS SARL`);
-  notify('Demande de suppression soumise ! Dev notifié.');
-  document.getElementById('sup-fw').innerHTML='';
-}
-async function executerSuppression(id){
-  if(!confirm('Confirmer la suppression définitive de ce membre ?'))return;
-  const s=DB.suppressions.find(s=>s.id===id);
-  if(!s)return;
-  // Désactiver le compte (ne pas supprimer pour garder l'historique)
-  if(s.membreId) await fsUpdate('users',s.membreId,{actif:false,supprimeLe:today(),supprimeParChef:s.chefId});
-  await fsUpdate('suppressions',id,{statusDev:'approuvé',devDate:today()});
-  // Notifier le chef
-  await notifyUser(s.chefId,`✅ Suppression confirmée — ${s.membreNom}`,
-    `Bonjour ${uname(s.chefId)},\n\nLe compte de ${s.membreNom} a été désactivé par le Développeur.\n\nEMS SARL`);
-  // Notifier le membre
-  await sendMail(s.membreEmail,s.membreNom,`📩 Information EMS SARL`,
-    `Bonjour ${s.membreNom},\n\nVotre compte sur EMS SARL Mission Manager a été désactivé.\n\nPour toute question, contactez votre responsable.\n\nCordialement,\nEMS SARL`);
-  notify(`Compte ${s.membreNom} désactivé. Chef et membre notifiés.`,'ok');
-}
-async function refuserSuppression(id){
-  const s=DB.suppressions.find(s=>s.id===id);
-  await fsUpdate('suppressions',id,{statusDev:'refusé',devDate:today()});
-  if(s) await notifyUser(s.chefId,`❌ Suppression refusée — ${s.membreNom}`,
-    `Bonjour ${uname(s.chefId)},\n\nLa demande de suppression de ${s.membreNom} a été refusée par le Développeur.\n\nEMS SARL`);
-  notify('Demande refusée — Chef notifié');
-}
-// ══════════════════════════════════════════
-// CHANGEMENTS DE CHEF D'ÉQUIPE
-// ══════════════════════════════════════════
-function changements(){
-  const r=CU.role;
-  const visible=r==='dev'?DB.changements:DB.changements.filter(c=>c.demandeurId===CU.id);
-  return`<div class="ps">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px">
-    <div><h3 style="font-weight:800;color:var(--nm);font-size:18px">Changements de chef d'équipe</h3>
-    <p style="font-size:13px;color:var(--gray600)">${visible.length} demande(s)</p></div>
-    ${r==='admin'||r==='pdg'?`<button class="btn bpu sm" onclick="showChangementForm()">🔄 Demander un changement</button>`:''}
-  </div>
-  <div id="chg-fw"></div>
-  <div class="card" style="margin-bottom:16px"><div class="ct">🔄 Circuit de changement</div>
-    <div class="wfs">
-      <div class="wfst wfd">1. DG/PDG soumet</div><div class="wfa">→</div>
-      <div class="wfst ${r==='dev'?'wfp':'wfw'}">2. Dev applique</div>
-    </div>
-  </div>
-  ${visible.length===0?`<div class="card"><div class="empty"><div class="eico">🔄</div>Aucun changement en cours</div></div>`:''}
-  ${visible.map(c=>{
-    const ancienChef=uobj(c.ancienChefId)||{name:c.ancienChefNom,av:'?'};
-    const nouveauChef=uobj(c.nouveauChefId)||{name:c.nouveauChefNom,av:'?'};
-    const canExec=r==='dev'&&c.statusDev==='en attente';
-    return`<div style="background:var(--white);border-radius:var(--r);padding:17px;margin-bottom:12px;box-shadow:var(--sh);border-left:4px solid ${c.statusDev==='approuvé'?'var(--fl)':c.statusDev==='refusé'?'var(--red)':'var(--purple)'}">
-      <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:10px">
-        <div>
-          <div style="font-weight:800;color:var(--nm);font-size:15px">Équipe : ${c.equipe}</div>
-          <div style="display:flex;align-items:center;gap:10px;margin-top:8px;flex-wrap:wrap">
-            <div style="text-align:center">
-              ${avH(ancienChef,32)}
-              <div style="font-size:11px;color:var(--gray600);margin-top:3px">Ancien chef</div>
-              <div style="font-size:12px;font-weight:700;color:var(--nm)">${c.ancienChefNom}</div>
-            </div>
-            <div style="font-size:20px;color:var(--purple)">→</div>
-            <div style="text-align:center">
-              ${avH(nouveauChef,32)}
-              <div style="font-size:11px;color:var(--gray600);margin-top:3px">Nouveau chef</div>
-              <div style="font-size:12px;font-weight:700;color:var(--fl)">${c.nouveauChefNom}</div>
-            </div>
-          </div>
-          <div style="font-size:12px;color:var(--gray600);margin-top:7px">Demandé par : ${uname(c.demandeurId)} · ${c.date}</div>
-          ${c.motif?`<div style="font-size:12px;background:var(--gray50);padding:7px 9px;border-radius:var(--rs);margin-top:6px">"${c.motif}"</div>`:''}
-        </div>
-        <div>${tagH(c.statusDev)}</div>
-      </div>
-      ${canExec?`<div class="br" style="margin-top:11px">
-        <button class="btn bpu sm" onclick="executerChangement('${c.id}')">🔄 Appliquer le changement</button>
-        <button class="btn bg sm" onclick="refuserChangement('${c.id}')">❌ Refuser</button>
-      </div>`:''}
-    </div>`;
-  }).join('')}</div>`;
-}
-function showChangementForm(){
-  const chefs=DB.users.filter(u=>u.role==='chef'&&u.actif);
-  const equipes=[...new Set(chefs.map(c=>c.team).filter(Boolean))];
-  document.getElementById('chg-fw').innerHTML=`<div class="fc" style="border-top-color:var(--purple)">
-    <div class="ft">🔄 Demande de changement de chef d'équipe</div>
-    <div class="fg2">
-      <div class="fg"><label class="fl">Équipe concernée</label>
-        <select id="chg-eq" class="fs" onchange="updateChgChefs()">
-          <option value="">— Choisir une équipe —</option>
-          ${equipes.map(e=>`<option value="${e}">${e}</option>`).join('')}
-        </select>
-      </div>
-      <div class="fg"><label class="fl">Ancien chef</label>
-        <select id="chg-old" class="fs"><option value="">— Sélectionnez l'équipe —</option></select>
-      </div>
-      <div class="fg"><label class="fl">Nouveau chef</label>
-        <select id="chg-new" class="fs">
-          <option value="">— Choisir —</option>
-          ${chefs.map(c=>`<option value="${c.id}">${c.name} (${c.team||'—'})</option>`).join('')}
-        </select>
-      </div>
-    </div>
-    <div class="fg" style="margin-bottom:13px"><label class="fl">Motif</label>
-      <textarea id="chg-motif" class="fta" placeholder="Raison du changement..."></textarea>
-    </div>
-    <div class="br">
-      <button class="btn bpu sm" onclick="submitChangement()">📨 Soumettre</button>
-      <button class="btn bg sm" onclick="document.getElementById('chg-fw').innerHTML=''">Annuler</button>
-    </div>
-  </div>`;
-}
-function updateChgChefs(){
-  const eq=document.getElementById('chg-eq').value;
-  const chefs=DB.users.filter(u=>u.role==='chef'&&u.team===eq&&u.actif);
-  document.getElementById('chg-old').innerHTML=`<option value="">— Choisir —</option>${chefs.map(c=>`<option value="${c.id}">${c.name}</option>`).join('')}`;
-}
-async function submitChangement(){
-  const equipe=document.getElementById('chg-eq').value;
-  const ancienChefId=document.getElementById('chg-old').value;
-  const nouveauChefId=document.getElementById('chg-new').value;
-  const motif=document.getElementById('chg-motif').value.trim();
-  if(!equipe||!ancienChefId||!nouveauChefId)return notify('Remplissez tous les champs','er');
-  if(ancienChefId===nouveauChefId)return notify('Ancien et nouveau chef identiques','er');
-  const ancienChef=uobj(ancienChefId);const nouveauChef=uobj(nouveauChefId);
-  await fsAdd('changements',{
-    demandeurId:CU.id,equipe,
-    ancienChefId,ancienChefNom:ancienChef?.name||'—',
-    nouveauChefId,nouveauChefNom:nouveauChef?.name||'—',
-    motif,date:today(),statusDev:'en attente'
-  });
-  await notifyUsers(['dev'],`🔄 Changement de chef — ${equipe}`,
-    `Bonjour,\n\n${CU.name} demande un changement de chef pour l'équipe ${equipe} :\n\n👤 Ancien : ${ancienChef?.name||'—'}\n👤 Nouveau : ${nouveauChef?.name||'—'}\n📝 Motif : ${motif||'—'}\n\nConnectez-vous pour appliquer ce changement.\n\nEMS SARL`);
-  notify('Demande soumise ! Dev notifié.');
-  document.getElementById('chg-fw').innerHTML='';
-}
-async function executerChangement(id){
-  if(!confirm('Appliquer ce changement de chef ?'))return;
-  const c=DB.changements.find(c=>c.id===id);
-  if(!c)return;
-  // Mettre à jour tous les membres de l'équipe : changer chefId
-  const membres=DB.users.filter(u=>u.chefId===c.ancienChefId&&u.role==='missionnaire');
-  for(const m of membres) await fsUpdate('users',m.id,{chefId:c.nouveauChefId});
-  // Mettre à jour le nouveau chef : assigner l'équipe
-  await fsUpdate('users',c.nouveauChefId,{team:c.equipe});
-  await fsUpdate('changements',id,{statusDev:'approuvé',devDate:today()});
-  // Notifier les deux chefs
-  await notifyUser(c.ancienChefId,`📩 Changement de chef — ${c.equipe}`,
-    `Bonjour ${c.ancienChefNom},\n\nVous avez été remplacé comme chef de l'équipe ${c.equipe} par ${c.nouveauChefNom}.\n\nDecision de : ${uname(c.demandeurId)}.\n\nEMS SARL`);
-  await notifyUser(c.nouveauChefId,`🎉 Vous êtes maintenant chef de ${c.equipe}`,
-    `Bonjour ${c.nouveauChefNom},\n\nVous avez été nommé chef de l'équipe ${c.equipe} par ${uname(c.demandeurId)}.\n\nL'équipe comprend ${membres.length} membre(s).\n\nEMS SARL`);
-  await notifyUser(c.demandeurId,`✅ Changement appliqué — ${c.equipe}`,
-    `Bonjour,\n\nLe changement de chef pour ${c.equipe} a été appliqué.\n\nAncien : ${c.ancienChefNom} → Nouveau : ${c.nouveauChefNom}\n${membres.length} membre(s) transféré(s).\n\nEMS SARL`);
-  notify(`Changement appliqué ! ${membres.length} membres transférés. Parties notifiées.`,'ok');
-}
-async function refuserChangement(id){
-  const c=DB.changements.find(c=>c.id===id);
-  await fsUpdate('changements',id,{statusDev:'refusé',devDate:today()});
-  if(c) await notifyUser(c.demandeurId,`❌ Changement refusé — ${c.equipe}`,
-    `Bonjour,\n\nVotre demande de changement de chef pour ${c.equipe} a été refusée par le Développeur.\n\nEMS SARL`);
-  notify('Changement refusé — Demandeur notifié');
-}
-
-// ══════════════════════════════════════════
-// RECRUTEMENT
-// ══════════════════════════════════════════
-function recrutement(){
-  const r=CU?CU.role:'public';
-  const canManage=['pdg','admin','rh','dev'].includes(r);
-  const postes=DB.recrutements.filter(p=>p.ouvert||canManage);
-  return`<div class="ps">
-  ${r==='public'?`<div style="text-align:right;margin-bottom:12px"><button class="btn bg sm" onclick="doLogout()">← Retour</button></div>`:''}
-  <div style="background:linear-gradient(135deg,var(--nm),var(--fl));border-radius:var(--r);padding:22px;margin-bottom:20px;color:#fff">
-    <h2 style="font-size:20px;font-weight:800">🎯 Offres de recrutement</h2>
-    <p style="opacity:.7;font-size:13px;margin-top:3px">Rejoignez l'équipe EMS SARL</p>
-  </div>
-  ${canManage?`<div style="margin-bottom:14px;display:flex;gap:8px;flex-wrap:wrap">
-    <button class="btn bp sm" onclick="showPostForm()">+ Nouvelle offre</button>
-    <button class="btn bb sm" onclick="showCandidatures()">👁 Candidatures (${DB.candidatures.length})</button>
-  </div>`:''}
-  <div id="pf-wrap"></div>
-  ${postes.map(p=>`<div style="background:var(--white);border-radius:var(--r);padding:18px;margin-bottom:12px;box-shadow:var(--sh);display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
-    <div style="flex:1">
-      <div style="font-size:16px;font-weight:800;color:var(--nm);margin-bottom:5px">${p.poste}${!p.ouvert?` <span class="tag tr" style="font-size:10px">Fermé</span>`:''}</div>
-      <div style="font-size:12px;color:var(--gray600);margin-bottom:5px">🏢 ${p.equipe} · 📅 ${p.date}</div>
-      <div style="font-size:13px;color:var(--gray800);margin-bottom:5px">${p.description}</div>
-      <div style="font-size:12px;color:var(--gray600)">✅ ${p.requis}</div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:7px">
-      ${p.ouvert?`<button class="btn bp sm" onclick="showCandidForm('${p.id}')">Postuler →</button>`:''}
-      ${canManage?`<button class="btn bg sm" onclick="togglePoste('${p.id}')">${p.ouvert?'Fermer':'Rouvrir'}</button><button class="ib" onclick="delPoste('${p.id}')">🗑️</button>`:''}
-    </div>
-  </div>`).join('')}
-  <div id="cf-wrap"></div></div>`;
-}
-function showPostForm(){
-  document.getElementById('pf-wrap').innerHTML=`<div class="fc">
-    <div class="ft">📋 Nouvelle offre</div>
-    <div class="fg2">
-      <div class="fg"><label class="fl">Poste</label><input id="pp" class="fi" placeholder="Missionnaire de vente"></div>
-      <div class="fg"><label class="fl">Équipe</label><input id="pe" class="fi" placeholder="Équipe Nord"></div>
-    </div>
-    <div class="fg" style="margin-bottom:10px"><label class="fl">Description</label><textarea id="pd" class="fta" placeholder="Missions..."></textarea></div>
-    <div class="fg" style="margin-bottom:13px"><label class="fl">Prérequis</label><input id="pr2" class="fi" placeholder="Permis B..."></div>
-    <div class="br"><button class="btn bs sm" onclick="submitPoste()">📤 Publier</button><button class="btn bg sm" onclick="document.getElementById('pf-wrap').innerHTML=''">Annuler</button></div>
-  </div>`;
-}
-async function submitPoste(){
-  const p=document.getElementById('pp').value.trim(),d=document.getElementById('pd').value.trim();
-  if(!p||!d)return notify('Poste et description requis','er');
-  await fsAdd('recrutements',{poste:p,equipe:document.getElementById('pe').value.trim(),description:d,requis:document.getElementById('pr2').value.trim(),ouvert:true,date:today()});
-  notify('Offre publiée !');document.getElementById('pf-wrap').innerHTML='';
-}
-async function togglePoste(id){const p=DB.recrutements.find(p=>p.id===id);if(p)await fsUpdate('recrutements',id,{ouvert:!p.ouvert});}
-async function delPoste(id){if(!confirm('Supprimer ?'))return;await fsDelete('recrutements',id);}
-function showCandidForm(postId){
-  const p=DB.recrutements.find(p=>p.id===postId);
-  document.getElementById('cf-wrap').innerHTML=`<div class="fc" style="border-top-color:var(--blue)">
-    <div class="ft">📝 Postuler — ${p?p.poste:''}</div>
-    <div class="fg2">
-      <div class="fg"><label class="fl">Nom complet</label><input id="cn" class="fi" placeholder="Prénom Nom"></div>
-      <div class="fg"><label class="fl">Email</label><input id="ce" class="fi" type="email" placeholder="email@exemple.com"></div>
-      <div class="fg"><label class="fl">Téléphone</label><input id="ct2" class="fi" placeholder="97000000"></div>
-    </div>
-    <div class="fg" style="margin-bottom:13px"><label class="fl">Lettre de motivation</label><textarea id="ccv" class="fta" placeholder="Présentez-vous..."></textarea></div>
-    <input type="hidden" id="cpid" value="${postId}">
-    <div class="br"><button class="btn bb sm" onclick="submitCandid()">📨 Envoyer</button><button class="btn bg sm" onclick="document.getElementById('cf-wrap').innerHTML=''">Annuler</button></div>
-  </div>`;
-  document.getElementById('cf-wrap').scrollIntoView({behavior:'smooth'});
-}
-async function submitCandid(){
-  const n=document.getElementById('cn').value.trim(),e=document.getElementById('ce').value.trim(),cv=document.getElementById('ccv').value.trim();
-  if(!n||!e||!cv)return notify('Nom, email et motivation requis','er');
-  const postId=document.getElementById('cpid').value;
-  const poste=DB.recrutements.find(p=>p.id===postId);
-  await fsAdd('candidatures',{postId,nom:n,email:e,tel:document.getElementById('ct2').value.trim(),cv,date:today(),status:'en cours'});
-  await notifyUsers(['rh','admin','pdg'],`🎯 Nouvelle candidature — ${poste?poste.poste:'—'}`,
-    `Bonjour,\n\nNouvelle candidature :\n👤 ${n}\n📧 ${e}\n💼 ${poste?poste.poste:'—'}\n\nConnectez-vous pour traiter.\n\nEMS SARL`);
-  await sendMail(e,n,`✅ Candidature reçue — EMS SARL`,
-    `Bonjour ${n},\n\nNous avons bien reçu votre candidature pour le poste de ${poste?poste.poste:'—'} chez EMS SARL.\n\nNous vous contacterons prochainement.\n\nCordialement,\nEMS SARL`);
-  notify('Candidature envoyée !','inf');
-  document.getElementById('cf-wrap').innerHTML=`<div class="card" style="border-top:3px solid var(--fl);margin-top:10px"><div class="empty"><div class="eico">🎉</div>Candidature reçue ! Merci ${n}.</div></div>`;
-}
-function showCandidatures(){
-  mkModal(`<div class="mt">👥 Candidatures (${DB.candidatures.length})</div>
-    <div style="overflow-y:auto;max-height:55vh">
-    ${DB.candidatures.length===0?'<div class="empty">Aucune candidature</div>':''}
-    ${DB.candidatures.map(c=>{const p=DB.recrutements.find(r=>r.id===c.postId);return`<div style="padding:12px 0;border-bottom:1px solid var(--gray200)">
-      <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:7px;margin-bottom:5px">
-        <div><div style="font-weight:800;color:var(--nm)">${c.nom}</div>
-        <div style="font-size:12px;color:var(--gray600)">${c.email} · ${p?p.poste:'—'} · ${c.date}</div></div>
-        <div style="display:flex;gap:5px;align-items:flex-start">
-          ${tagH(c.status)}
-          <button class="btn bs xs" onclick="setCandid('${c.id}','accepté')">✅</button>
-          <button class="btn bd xs" onclick="setCandid('${c.id}','refusé')">❌</button>
-        </div>
-      </div>
-      <div style="font-size:12px;background:var(--gray50);padding:7px 9px;border-radius:var(--rs)">${c.cv}</div>
-    </div>`}).join('')}
-    </div>
-    <div class="br" style="margin-top:14px"><button class="btn bg sm" onclick="closeModal()">Fermer</button></div>`);
-}
-async function setCandid(id,s){
-  const c=DB.candidatures.find(c=>c.id===id);
-  await fsUpdate('candidatures',id,{status:s});
-  if(c) await sendMail(c.email,c.nom,
-    s==='accepté'?`🎉 Candidature acceptée — EMS SARL`:`📩 Résultat candidature — EMS SARL`,
-    s==='accepté'?`Bonjour ${c.nom},\n\nVotre candidature a été acceptée ! Nous vous contacterons très prochainement.\n\nEMS SARL`
-      :`Bonjour ${c.nom},\n\nNous ne donnons pas suite à votre candidature pour le moment. Merci de votre intérêt.\n\nEMS SARL`);
-  notify(`Candidature ${s} — ${c?.nom} notifié`);
-}
-
-// ══════════════════════════════════════════
-// ÉQUIPE
-// ══════════════════════════════════════════
-function equipe(){
-  const r=CU.role;
-  const members=r==='chef'?DB.users.filter(u=>u.chefId===CU.id&&u.actif):DB.users.filter(u=>u.role==='missionnaire'&&u.actif);
-  const maxCA=Math.max(...members.map(m=>DB.stats.filter(s=>s.userId===m.id&&s.status==='validé').reduce((a,s)=>a+s.montant,0)),1);
-  return`<div class="ps">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px">
-    <h3 style="font-weight:800;color:var(--nm);font-size:18px">Performance équipe</h3>
-    <div style="display:flex;gap:8px;flex-wrap:wrap">
-      <button class="btn bg sm" onclick="showMembresPDFFilter()">📄 Membres PDF</button>
-      <button class="btn bg sm" onclick="exportPDFEquipes()">📄 Équipes PDF</button>
-    </div>
-  </div>
-  <div id="membres-pdf-wrap"></div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:14px">
-    ${members.map(m=>{
-      const ms=DB.stats.filter(s=>s.userId===m.id&&s.status==='validé');
-      const total=ms.reduce((a,s)=>a+s.montant,0);
-      const vis=ms.reduce((a,s)=>a+s.visites,0);
-      const pros=ms.reduce((a,s)=>a+s.prospects,0);
-      const taux=vis>0?Math.round(pros/vis*100):0;
-      const pct=Math.round(total/maxCA*100);
-      const comm=calcComm(m.id);
-      return`<div style="background:var(--white);border-radius:var(--r);padding:17px;box-shadow:var(--sh)">
-        <div style="display:flex;align-items:center;gap:11px;margin-bottom:13px">
-          ${avH(m,42)}<div><div style="font-weight:800;color:var(--nm)">${m.name}</div>
-          <div style="font-size:12px;color:var(--gray600)">${m.team||'—'}</div>
-          <div style="font-size:11px;color:var(--gold);font-weight:700">Commission : ${fmt(comm.commission)}</div></div>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:11px">
-          ${[['CA validé',fmt(total),'var(--fl)'],['Rapports',ms.length,'var(--nm)'],['Visites',vis,'var(--purple)'],['Taux conv.',taux+'%','var(--or)']].map(([l,v,c])=>`<div style="background:var(--gray50);border-radius:var(--rs);padding:8px 10px"><div style="font-size:10px;color:var(--gray600)">${l}</div><div style="font-size:14px;font-weight:800;color:${c};margin-top:1px">${v}</div></div>`).join('')}
-        </div>
-        <div class="pbl"><span>Performance</span><span>${pct}%</span></div>
-        <div class="pb"><div class="pbf" style="width:0" data-w="${pct}%"></div></div>
-      </div>`;
-    }).join('')}
-  </div></div>`;
-}
-function showMembresPDFFilter(){
-  document.getElementById('membres-pdf-wrap').innerHTML=`<div class="fc" style="border-top-color:var(--purple)">
-    <div class="ft">📄 Export membres — Période</div>
-    <div style="display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap">
-      <button class="btn bpu sm" id="mp-m-btn" onclick="setMembresPDFMode('mois')">Par mois</button>
-      <button class="btn bg sm" id="mp-p-btn" onclick="setMembresPDFMode('plage')">Par plage</button>
-      <button class="btn bg sm" id="mp-t-btn" onclick="setMembresPDFMode('tous')">Tous</button>
-    </div>
-    <div id="mp-mode-mois"><div class="fg"><label class="fl">Mois</label><input type="month" id="mp-mois" class="fi" value="${currentMonth()}"></div></div>
-    <div id="mp-mode-plage" style="display:none"><div class="fg2">
-      <div class="fg"><label class="fl">Du</label><input type="date" id="mp-du" class="fi"></div>
-      <div class="fg"><label class="fl">Au</label><input type="date" id="mp-au" class="fi"></div>
-    </div></div>
-    <div class="br" style="margin-top:12px">
-      <button class="btn bp sm" onclick="exportPDFMembresFiltre()">📄 Générer PDF</button>
-      <button class=${equipes.map(e=>`<option value="${e}">${e}</option>`).join('')}
-        </select>
-      </div>
-      <div class="fg"><label class="fl">Ancien chef</label>
-        <select id="chg-old" class="fs"><option value="">— Sélectionnez l'équipe —</option></select>
-      </div>
-      <div class="fg"><label class="fl">Nouveau chef</label>
-        <select id="chg-new" class="fs">
-          <option value="">— Choisir —</option>
-          ${chefs.map(c=>`<option value="${c.id}">${c.name} (${c.team||'—'})</option>`).join('')}
-        </select>
-      </div>
-    </div>
-    <div class="fg" style="margin-bottom:13px"><label class="fl">Motif</label>
-      <textarea id="chg-motif" class="fta" placeholder="Raison du changement..."></textarea>
-    </div>
-    <div class="br">
-      <button class="btn bpu sm" onclick="submitChangement()">📨 Soumettre</button>
-      <button class="btn bg sm" onclick="document.getElementById('chg-fw').innerHTML=''">Annuler</button>
-    </div>
-  </div>`;
-}
-function updateChgChefs(){
-  const eq=document.getElementById('chg-eq').value;
-  const chefs=DB.users.filter(u=>u.role==='chef'&&u.team===eq&&u.actif);
-  document.getElementById('chg-old').innerHTML=`<option value="">— Choisir —</option>${chefs.map(c=>`<option value="${c.id}">${c.name}</option>`).join('')}`;
-}
-async function submitChangement(){
-  const equipe=document.getElementById('chg-eq').value;
-  const ancienChefId=document.getElementById('chg-old').value;
-  const nouveauChefId=document.getElementById('chg-new').value;
-  const motif=document.getElementById('chg-motif').value.trim();
-  if(!equipe||!ancienChefId||!nouveauChefId)return notify('Remplissez tous les champs','er');
-  if(ancienChefId===nouveauChefId)return notify('Ancien et nouveau chef identiques','er');
-  const ancienChef=uobj(ancienChefId);const nouveauChef=uobj(nouveauChefId);
-  await fsAdd('changements',{demandeurId:CU.id,equipe,ancienChefId,ancienChefNom:ancienChef?.name||'—',nouveauChefId,nouveauChefNom:nouveauChef?.name||'—',motif,date:today(),statusDev:'en attente'});
-  await notifyUsers(['dev'],`🔄 Changement de chef — ${equipe}`,
-    `Bonjour,\n\n${CU.name} demande un changement de chef pour ${equipe} :\n\nAncien : ${ancienChef?.name||'—'}\nNouveau : ${nouveauChef?.name||'—'}\nMotif : ${motif||'—'}\n\nConnectez-vous pour appliquer.\n\nEMS SARL`);
-  notify('Demande soumise ! Dev notifié.');
-  document.getElementById('chg-fw').innerHTML='';
-}
-async function executerChangement(id){
-  if(!confirm('Appliquer ce changement de chef ?'))return;
-  const c=DB.changements.find(c=>c.id===id);if(!c)return;
-  const membres=DB.users.filter(u=>u.chefId===c.ancienChefId&&u.role==='missionnaire');
-  for(const m of membres)await fsUpdate('users',m.id,{chefId:c.nouveauChefId});
-  await fsUpdate('users',c.nouveauChefId,{team:c.equipe});
-  await fsUpdate('changements',id,{statusDev:'approuvé',devDate:today()});
-  await notifyUser(c.ancienChefId,`📩 Vous n'êtes plus chef de ${c.equipe}`,
-    `Bonjour ${c.ancienChefNom},\n\nVous avez été remplacé comme chef de ${c.equipe} par ${c.nouveauChefNom}.\n\nDecision de : ${uname(c.demandeurId)}.\n\nEMS SARL`);
-  await notifyUser(c.nouveauChefId,`🎉 Vous êtes chef de ${c.equipe}`,
-    `Bonjour ${c.nouveauChefNom},\n\nVous êtes nommé chef de ${c.equipe} par ${uname(c.demandeurId)}.\n${membres.length} agent(s) transféré(s).\n\nEMS SARL`);
-  await notifyUser(c.demandeurId,`✅ Changement appliqué — ${c.equipe}`,
-    `Bonjour,\n\nChangement appliqué pour ${c.equipe}.\nAncien : ${c.ancienChefNom} → Nouveau : ${c.nouveauChefNom}\n${membres.length} agent(s) transféré(s).\n\nEMS SARL`);
-  notify(`Changement appliqué ! ${membres.length} agent(s) transféré(s).`,'ok');
-}
-async function refuserChangement(id){
-  const c=DB.changements.find(c=>c.id===id);
-  await fsUpdate('changements',id,{statusDev:'refusé',devDate:today()});
-  if(c)await notifyUser(c.demandeurId,`❌ Changement refusé — ${c.equipe}`,
-    `Bonjour,\n\nVotre demande de changement pour ${c.equipe} a été refusée.\n\nEMS SARL`);
-  notify('Changement refusé — Demandeur notifié');
-  }
-// ══════════════════════════════════════════
-// RECRUTEMENT
-// ══════════════════════════════════════════
-function recrutement(){
-  const r=CU?CU.role:'public';
-  const canManage=['pdg','admin','rh','dev'].includes(r);
-  const postes=DB.recrutements.filter(p=>p.ouvert||canManage);
-  return`<div class="ps">
-  ${r==='public'?`<div style="text-align:right;margin-bottom:12px"><button class="btn bg sm" onclick="doLogout()">← Retour</button></div>`:''}
-  <div style="background:linear-gradient(135deg,var(--nm),var(--fl));border-radius:var(--r);padding:22px;margin-bottom:20px;color:#fff">
-    <h2 style="font-size:20px;font-weight:800">🎯 Offres de recrutement</h2>
-    <p style="opacity:.7;font-size:13px;margin-top:3px">Rejoignez l'équipe EMS SARL</p>
-  </div>
-  ${canManage?`<div style="margin-bottom:14px;display:flex;gap:8px;flex-wrap:wrap">
-    <button class="btn bp sm" onclick="showPostForm()">+ Nouvelle offre</button>
-    <button class="btn bb sm" onclick="showCandidatures()">👁 Candidatures (${DB.candidatures.length})</button>
-  </div>`:''}
-  <div id="pf-wrap"></div>
-  ${postes.map(p=>`<div style="background:var(--white);border-radius:var(--r);padding:18px;margin-bottom:12px;box-shadow:var(--sh);display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
-    <div style="flex:1">
-      <div style="font-size:16px;font-weight:800;color:var(--nm);margin-bottom:5px">${p.poste}${!p.ouvert?` <span class="tag tr" style="font-size:10px">Fermé</span>`:''}</div>
-      <div style="font-size:12px;color:var(--gray600);margin-bottom:5px">🏢 ${p.equipe} · 📅 ${p.date}</div>
-      <div style="font-size:13px;color:var(--gray800);margin-bottom:5px">${p.description}</div>
-      <div style="font-size:12px;color:var(--gray600)">✅ ${p.requis}</div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:7px">
-      ${p.ouvert?`<button class="btn bp sm" onclick="showCandidForm('${p.id}')">Postuler →</button>`:''}
-      ${canManage?`<button class="btn bg sm" onclick="togglePoste('${p.id}')">${p.ouvert?'Fermer':'Rouvrir'}</button><button class="ib" onclick="delPoste('${p.id}')">🗑️</button>`:''}
-    </div>
-  </div>`).join('')}
-  <div id="cf-wrap"></div></div>`;
-}
-function showPostForm(){
-  document.getElementById('pf-wrap').innerHTML=`<div class="fc">
-    <div class="ft">📋 Nouvelle offre</div>
-    <div class="fg2">
-      <div class="fg"><label class="fl">Poste</label><input id="pp" class="fi" placeholder="Agent commercial"></div>
-      <div class="fg"><label class="fl">Équipe</label><input id="pe" class="fi" placeholder="Équipe Nord"></div>
-    </div>
-    <div class="fg" style="margin-bottom:10px"><label class="fl">Description</label><textarea id="pd" class="fta" placeholder="Missions..."></textarea></div>
-    <div class="fg" style="margin-bottom:13px"><label class="fl">Prérequis</label><input id="pr2" class="fi" placeholder="Permis B, dynamique..."></div>
-    <div class="br"><button class="btn bs sm" onclick="submitPoste()">📤 Publier</button><button class="btn bg sm" onclick="document.getElementById('pf-wrap').innerHTML=''">Annuler</button></div>
-  </div>`;
-}
-async function submitPoste(){
-  const p=document.getElementById('pp').value.trim(),d=document.getElementById('pd').value.trim();
-  if(!p||!d)return notify('Poste et description requis','er');
-  await fsAdd('recrutements',{poste:p,equipe:document.getElementById('pe').value.trim(),description:d,requis:document.getElementById('pr2').value.trim(),ouvert:true,date:today()});
-  notify('Offre publiée !');document.getElementById('pf-wrap').innerHTML='';
-}
-async function togglePoste(id){const p=DB.recrutements.find(p=>p.id===id);if(p)await fsUpdate('recrutements',id,{ouvert:!p.ouvert});}
-async function delPoste(id){if(!confirm('Supprimer ?'))return;await fsDelete('recrutements',id);}
-function showCandidForm(postId){
-  const p=DB.recrutements.find(p=>p.id===postId);
-  document.getElementById('cf-wrap').innerHTML=`<div class="fc" style="border-top-color:var(--blue)">
-    <div class="ft">📝 Postuler — ${p?p.poste:''}</div>
-    <div class="fg2">
-      <div class="fg"><label class="fl">Nom complet</label><input id="cn" class="fi" placeholder="Prénom Nom"></div>
-      <div class="fg"><label class="fl">Email</label><input id="ce" class="fi" type="email" placeholder="email@exemple.com"></div>
-      <div class="fg"><label class="fl">Téléphone</label><input id="ct2" class="fi" placeholder="97000000"></div>
-    </div>
-    <div class="fg" style="margin-bottom:13px"><label class="fl">Lettre de motivation</label><textarea id="ccv" class="fta" placeholder="Présentez-vous..."></textarea></div>
-    <input type="hidden" id="cpid" value="${postId}">
-    <div class="br"><button class="btn bb sm" onclick="submitCandid()">📨 Envoyer</button><button class="btn bg sm" onclick="document.getElementById('cf-wrap').innerHTML=''">Annuler</button></div>
-  </div>`;
-  document.getElementById('cf-wrap').scrollIntoView({behavior:'smooth'});
-}
-async function submitCandid(){
-  const n=document.getElementById('cn').value.trim(),e=document.getElementById('ce').value.trim(),cv=document.getElementById('ccv').value.trim();
-  if(!n||!e||!cv)return notify('Nom, email et motivation requis','er');
-  const postId=document.getElementById('cpid').value;
-  const poste=DB.recrutements.find(p=>p.id===postId);
-  await fsAdd('candidatures',{postId,nom:n,email:e,tel:document.getElementById('ct2').value.trim(),cv,date:today(),status:'en cours'});
-  await notifyUsers(['rh','admin','pdg'],`🎯 Nouvelle candidature — ${poste?poste.poste:'—'}`,
-    `Bonjour,\n\nNouvelle candidature :\n👤 ${n}\n📧 ${e}\n💼 ${poste?poste.poste:'—'}\n\nConnectez-vous pour traiter.\n\nEMS SARL`);
-  await sendMail(e,n,`✅ Candidature reçue — EMS SARL`,
-    `Bonjour ${n},\n\nNous avons bien reçu votre candidature pour le poste de ${poste?poste.poste:'—'} chez EMS SARL.\nNous vous contacterons prochainement.\n\nCordialement,\nEMS SARL`);
-  notify('Candidature envoyée !','inf');
-  document.getElementById('cf-wrap').innerHTML=`<div class="card" style="border-top:3px solid var(--fl);margin-top:10px"><div class="empty"><div class="eico">🎉</div>Candidature reçue ! Merci ${n}.</div></div>`;
-}
-function showCandidatures(){
-  mkModal(`<div class="mt">👥 Candidatures (${DB.candidatures.length})</div>
-    <div style="overflow-y:auto;max-height:55vh">
-    ${DB.candidatures.length===0?'<div class="empty">Aucune candidature</div>':''}
-    ${DB.candidatures.map(c=>{const p=DB.recrutements.find(r=>r.id===c.postId);return`<div style="padding:12px 0;border-bottom:1px solid var(--gray200)">
-      <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:7px;margin-bottom:5px">
-        <div><div style="font-weight:800;color:var(--nm)">${c.nom}</div>
-        <div style="font-size:12px;color:var(--gray600)">${c.email} · ${p?p.poste:'—'} · ${c.date}</div></div>
-        <div style="display:flex;gap:5px">
-          ${tagH(c.status)}
-          <button class="btn bs xs" onclick="setCandid('${c.id}','accepté')">✅</button>
-          <button class="btn bd xs" onclick="setCandid('${c.id}','refusé')">❌</button>
-        </div>
-      </div>
-      <div style="font-size:12px;background:var(--gray50);padding:7px 9px;border-radius:var(--rs)">${c.cv}</div>
-    </div>`}).join('')}
-    </div>
-    <div class="br" style="margin-top:14px"><button class="btn bg sm" onclick="closeModal()">Fermer</button></div>`);
-}
-async function setCandid(id,s){
-  const c=DB.candidatures.find(c=>c.id===id);
-  await fsUpdate('candidatures',id,{status:s});
-  if(c)await sendMail(c.email,c.nom,
-    s==='accepté'?`🎉 Candidature acceptée — EMS SARL`:`📩 Résultat candidature — EMS SARL`,
-    s==='accepté'?`Bonjour ${c.nom},\n\nVotre candidature a été acceptée ! Nous vous contacterons très prochainement.\n\nEMS SARL`
-      :`Bonjour ${c.nom},\n\nNous ne donnons pas suite à votre candidature. Merci de votre intérêt pour EMS SARL.\n\nCordialement,\nEMS SARL`);
-  notify(`Candidature ${s} — ${c?.nom} notifié`);
-}
-
-// ══════════════════════════════════════════
-// ÉQUIPE
-// ══════════════════════════════════════════
-function equipe(){
-  const r=CU.role;
-  const members=r==='chef'?DB.users.filter(u=>u.chefId===CU.id&&u.actif):DB.users.filter(u=>u.role==='missionnaire'&&u.actif);
-  const maxCA=Math.max(...members.map(m=>DB.stats.filter(s=>s.userId===m.id&&s.status==='validé').reduce((a,s)=>a+s.montant,0)),1);
-  return`<div class="ps">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px">
-    <h3 style="font-weight:800;color:var(--nm);font-size:18px">Performance équipe</h3>
-    <div style="display:flex;gap:8px;flex-wrap:wrap">
-      <button class="btn bg sm" onclick="showMembresPDFFilter()">📄 Membres PDF</button>
-      <button class="btn bg sm" onclick="exportPDFEquipes()">📄 Équipes PDF</button>
-    </div>
-  </div>
-  <div id="membres-pdf-wrap"></div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:14px">
-    ${members.map(m=>{
-      const ms=DB.stats.filter(s=>s.userId===m.id&&s.status==='validé');
-      const total=ms.reduce((a,s)=>a+s.montant,0);
-      const vis=ms.reduce((a,s)=>a+s.visites,0);
-      const pros=ms.reduce((a,s)=>a+s.prospects,0);
-      const taux=vis>0?Math.round(pros/vis*100):0;
-      const pct=Math.round(total/maxCA*100);
-      const comm=calcComm(m.id);
-      return`<div style="background:var(--white);border-radius:var(--r);padding:17px;box-shadow:var(--sh)">
-        <div style="display:flex;align-items:center;gap:11px;margin-bottom:13px">
-          ${avH(m,42)}<div><div style="font-weight:800;color:var(--nm)">${m.name}</div>
-          <div style="font-size:12px;color:var(--gray600)">${m.team||'—'}</div>
-          <div style="font-size:11px;font-weight:700;margin-top:2px;color:${comm.taux===27?'var(--gold)':comm.taux===18?'var(--fl)':'var(--gray400)'}">
-            Commission : ${fmt(comm.commission)} (${comm.taux}%)
-          </div></div>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:11px">
-          ${[['Ventes validées',fmt(total),'var(--fl)'],['Rapports',ms.length,'var(--nm)'],['Visites',vis,'var(--purple)'],['Taux conv.',taux+'%','var(--or)']].map(([l,v,c])=>`<div style="background:var(--gray50);border-radius:var(--rs);padding:8px 10px"><div style="font-size:10px;color:var(--gray600)">${l}</div><div style="font-size:14px;font-weight:800;color:${c};margin-top:1px">${v}</div></div>`).join('')}
-        </div>
-        <div class="pbl"><span>Performance</span><span>${pct}%</span></div>
-        <div class="pb"><div class="pbf" style="width:0" data-w="${pct}%"></div></div>
-      </div>`;
-    }).join('')}
-  </div></div>`;
-}
-function showMembresPDFFilter(){
-  document.getElementById('membres-pdf-wrap').innerHTML=`<div class="fc" style="border-top-color:var(--purple)">
-    <div class="ft">📄 Export membres — Période</div>
-    <div style="display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap">
-      <button class="btn bpu sm" id="mp-m-btn" onclick="setMembresPDFMode('mois')">Par mois</button>
-      <button class="btn bg sm" id="mp-p-btn" onclick="setMembresPDFMode('plage')">Par plage</button>
-      <button class="btn bg sm" id="mp-t-btn" onclick="setMembresPDFMode('tous')">Tous</button>
-    </div>
-    <div id="mp-mode-mois"><div class="fg"><label class="fl">Mois</label><input type="month" id="mp-mois" class="fi" value="${currentMonth()}"></div></div>
-    <div id="mp-mode-plage" style="display:none"><div class="fg2">
-      <div class="fg"><label class="fl">Du</label><input type="date" id="mp-du" class="fi"></div>
-      <div class="fg"><label class="fl">Au</label><input type="date" id="mp-au" class="fi"></div>
-    </div></div>
-    <div class="br" style="margin-top:12px">
-      <button class="btn bp sm" onclick="exportPDFMembresFiltre()">📄 Générer</button>
-      <button class="btn bg sm" onclick="document.getElementById('membres-pdf-wrap').innerHTML=''">Annuler</button>
-    </div>
-  </div>`;
-}
-function setMembresPDFMode(m){
-  membresPDFMode=m;
-  document.getElementById('mp-mode-mois').style.display=m==='mois'?'block':'none';
-  document.getElementById('mp-mode-plage').style.display=m==='plage'?'block':'none';
-  ['mp-m-btn','mp-p-btn','mp-t-btn'].forEach(id=>{const el=document.getElementById(id);if(el)el.className='btn bg sm';});
-  const ids={mois:'mp-m-btn',plage:'mp-p-btn',tous:'mp-t-btn'};
-  const active=document.getElementById(ids[m]);if(active)active.className='btn bpu sm';
-}
-
-// ══════════════════════════════════════════
-// PLAINTES
-// ══════════════════════════════════════════
-function plaintes(){
-  const r=CU.role;
-  if(r==='public'||r==='rh')return`<div class="empty"><div class="eico">🔒</div>Accès non autorisé</div>`;
-  const visible=(r==='pdg'||r==='admin'||r==='dev')?DB.plaintes:DB.plaintes.filter(p=>p.userId===CU.id);
-  const canCreate=['chef','missionnaire'].includes(r);
-  const canReply=['pdg','admin','dev'].includes(r);
-  return`<div class="ps">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px">
-    <div><h3 style="font-weight:800;color:var(--nm);font-size:18px">Plaintes & Réclamations</h3>
-    <p style="font-size:13px;color:var(--gray600)">${visible.length} plainte(s)</p></div>
-    ${canCreate?`<button class="btn bd sm" onclick="showPlainteForm()">+ Nouvelle plainte</button>`:''}
-  </div>
-  <div id="pl-fw"></div>
-  ${visible.length===0?`<div class="card"><div class="empty"><div class="eico">😊</div>Aucune plainte</div></div>`:''}
-  ${visible.map(p=>{const u=uobj(p.userId);
-    return`<div style="background:var(--white);border-radius:var(--r);padding:17px;margin-bottom:12px;box-shadow:var(--sh);border-left:4px solid ${p.status==='résolu'?'var(--fl)':'var(--blue)'}">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;flex-wrap:wrap;gap:7px">
-        <div style="display:flex;align-items:center;gap:9px">${avH(u,30)}
-          <div><div style="font-weight:800;color:var(--nm)">${p.objet}</div>
-          <div style="font-size:12px;color:var(--gray600)">${u?u.name:'—'} · ${p.date}</div></div>
-        </div>${tagH(p.status)}
-      </div>
-      <p style="font-size:13px;color:var(--gray800);line-height:1.6;margin-bottom:${p.reponse||canReply?'9px':'0'}">${p.message}</p>
-      ${p.reponse?`<div style="background:var(--grl);border-radius:var(--rs);padding:9px 12px;font-size:13px;color:#15803d">💬 ${p.reponse}</div>`:''}
-      ${canReply&&p.status==='ouvert'?`<div style="display:flex;gap:7px;margin-top:9px;flex-wrap:wrap"><input class="fi" id="rep-${p.id}" placeholder="Votre réponse..." style="flex:1;min-width:180px"><button class="btn bs sm" onclick="repondre('${p.id}')">Répondre</button></div>`:''}
-    </div>`;}).join('')}</div>`;
-}
-function showPlainteForm(){
-  document.getElementById('pl-fw').innerHTML=`<div class="fc" style="border-top-color:var(--red)">
-    <div class="ft">📢 Nouvelle plainte</div>
-    <div class="fg" style="margin-bottom:10px"><label class="fl">Objet</label><input id="pob" class="fi" placeholder="Résumé bref"></div>
-    <div class="fg" style="margin-bottom:13px"><label class="fl">Message</label><textarea id="pmsg" class="fta" placeholder="Décrivez votre plainte..."></textarea></div>
-    <div class="br"><button class="btn bd sm" onclick="submitPlainte()">📨 Soumettre</button><button class="btn bg sm" onclick="document.getElementById('pl-fw').innerHTML=''">Annuler</button></div>
-  </div>`;
-}
-async function submitPlainte(){
-  const o=document.getElementById('pob').value.trim(),m=document.getElementById('pmsg').value.trim();
-  if(!o||!m)return notify('Remplissez tous les champs','er');
-  await fsAdd('plaintes',{userId:CU.id,date:today(),objet:o,message:m,status:'ouvert',reponse:''});
-  await notifyUsers(['pdg','admin','dev'],`📢 Nouvelle plainte — ${o}`,
-    `Bonjour,\n\nNouvelle plainte :\n\n👤 ${CU.name} (${ROLES[CU.role]})\n📋 ${o}\n\n💬 ${m}\n\nConnectez-vous pour répondre.\n\nEMS SARL`);
-  notify('Plainte soumise ! Direction notifiée.');
-  document.getElementById('pl-fw').innerHTML='';
-}
-async function repondre(id){
-  const r=document.getElementById('rep-'+id)?.value.trim();
-  if(!r)return notify('Réponse vide','er');
-  const p=DB.plaintes.find(p=>p.id===id);
-  await fsUpdate('plaintes',id,{status:'résolu',reponse:r});
-  if(p)await notifyUser(p.userId,`✅ Réponse à votre plainte — ${p.objet}`,
-    `Bonjour ${uname(p.userId)},\n\nVotre plainte "${p.objet}" a reçu une réponse de ${CU.name} :\n\n💬 "${r}"\n\nPlainte résolue.\n\nEMS SARL`);
-  notify('Réponse envoyée — Plaignant notifié !');
-}
-
-// ══════════════════════════════════════════
-// MESSAGES
-// ══════════════════════════════════════════
-function messages(){
-  const uid=CU.id;
-  const inbox=DB.messages.filter(m=>m.to===uid);
-  const sent=DB.messages.filter(m=>m.from===uid);
-  const sel=selMsg?DB.messages.find(m=>m.id===selMsg):null;
-  return`<div class="ps">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px">
-    <h3 style="font-weight:800;color:var(--nm);font-size:18px">Messagerie</h3>
-    <button class="btn bp sm" onclick="openCompose()">✉️ Nouveau message</button>
-  </div>
-  <div class="g2">
-    <div>
-      <div style="font-size:11px;font-weight:800;color:var(--nm);margin-bottom:7px;text-transform:uppercase">📥 Reçus (${inbox.length})</div>
-      <div style="border:1px solid var(--gray200);border-radius:var(--r);overflow:hidden;margin-bottom:14px">
-        ${inbox.length===0?`<div class="empty" style="padding:18px">Aucun message</div>`:''}
-        ${inbox.map(m=>{const from=uobj(m.from);return`<div style="display:flex;align-items:flex-start;gap:8px;padding:10px 13px;border-bottom:1px solid var(--gray200);cursor:pointer;background:${selMsg===m.id?'var(--bl)':'transparent'}" onclick="selM('${m.id}')">
-          ${avH(from,26)}<div style="flex:1;min-width:0">
-            <div style="display:flex;justify-content:space-between">
-              <span style="font-size:12px;font-weight:${m.lu?400:700};color:var(--nm)">${from?from.name:'—'}</span>
-              <span style="font-size:10px;color:var(--gray400)">${m.date}</span>
-            </div>
-            <div style="font-size:12px;color:var(--gray800);font-weight:${m.lu?400:600};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${m.sujet}</div>
-            ${!m.lu?`<span style="font-size:10px;background:var(--blue);color:#fff;border-radius:7px;padding:1px 6px">Nouveau</span>`:''}
-          </div>
-        </div>`;}).join('')}
-      </div>
-      <div style="font-size:11px;font-weight:800;color:var(--nm);margin-bottom:7px;text-transform:uppercase">📤 Envoyés (${sent.length})</div>
-      <div style="border:1px solid var(--gray200);border-radius:var(--r);overflow:hidden">
-        ${sent.length===0?`<div class="empty" style="padding:14px">Aucun envoi</div>`:''}
-        ${sent.map(m=>`<div style="padding:9px 13px;border-bottom:1px solid var(--gray200)">
-          <div style="font-size:12px;font-weight:600;color:var(--nm)">${m.sujet}</div>
-          <div style="font-size:11px;color:var(--gray600)">À : ${uname(m.to)} · ${m.date}</div>
-        </div>`).join('')}
-      </div>
-    </div>
-    <div>${sel?`<div class="card">
-      <div style="border-bottom:1px solid var(--gray200);padding-bottom:11px;margin-bottom:13px">
-        <div style="font-size:16px;font-weight:800;color:var(--nm)">${sel.sujet}</div>
-        <div style="font-size:12px;color:var(--gray600);margin-top:3px">De : ${uname(sel.from)} · ${sel.date}</div>
-      </div>
-      <div style="font-size:14px;line-height:1.7;color:var(--gray800);white-space:pre-line">${sel.contenu}</div>
-    </div>`:`<div class="card" style="height:160px;display:flex;align-items:center;justify-content:center;color:var(--gray400);font-size:13px">Sélectionnez un message</div>`}
-    </div>
-  </div></div>`;
-}
-async function selM(id){
-  await fsUpdate('messages',id,{lu:true});selMsg=
-// ══════════════════════════════════════════
-// PDF EXPORTS
-// ══════════════════════════════════════════
-function pdfHeader(doc,title,sub){
-  doc.setFillColor(15,39,68);doc.rect(0,0,doc.internal.pageSize.width,30,'F');
-  doc.setFillColor(46,139,87);doc.rect(0,28,doc.internal.pageSize.width,2,'F');
-  doc.setTextColor(255,255,255);doc.setFontSize(16);doc.setFont('helvetica','bold');
-  doc.text('EMS SARL — Mission Manager',14,13);
-  doc.setFontSize(11);doc.setFont('helvetica','normal');doc.text(title,14,21);
-  doc.setTextColor(40,40,40);doc.setFontSize(9);
-  doc.text(`Généré le ${new Date().toLocaleDateString('fr-FR')} par ${CU.name}`,14,37);
-  if(sub)doc.text(sub,14,43);
-  return sub?48:42;
-}
-function pdfFooter(doc){
-  const pageCount=doc.internal.getNumberOfPages();
-  for(let i=1;i<=pageCount;i++){
-    doc.setPage(i);
-    const w=doc.internal.pageSize.width;
-    const h=doc.internal.pageSize.height;
-    doc.setFontSize(7);doc.setTextColor(150,150,150);
-    doc.text('© EMS SARL — Tous droits réservés | Initiative de Kouessi Franck Kévin ADRE & HOUESSOU Gbessou Kamarou',14,h-8);
-    doc.text(`Page ${i} / ${pageCount}`,w-30,h-8);
-  }
-}
-
-function exportPDFRapportsFiltres(){
-  const{jsPDF}=window.jspdf;const doc=new jsPDF();
-  let filtered,periodLabel;
-  if(pdfMode==='mois'){
-    const mois=document.getElementById('pdf-mois')?.value||currentMonth();
-    filtered=DB.stats.filter(s=>s.status==='validé'&&s.date.startsWith(mois));
-    periodLabel=`Mois : ${mois}`;
-  }else{
-    const du=document.getElementById('pdf-du')?.value,au=document.getElementById('pdf-au')?.value;
-    if(!du||!au)return notify('Sélectionnez les deux dates','er');
-    filtered=DB.stats.filter(s=>s.status==='validé'&&s.date>=du&&s.date<=au);
-    periodLabel=`Du ${du} au ${au}`;
-  }
-  if(CU.role==='chef')filtered=filtered.filter(s=>s.chefId===CU.id);
-  const total=filtered.reduce((a,s)=>a+s.montant,0);
-  const y=pdfHeader(doc,`Rapports de vente — ${periodLabel}`,`Total validé : ${fmt(total)} · ${filtered.length} rapport(s)`);
-  const rows=filtered.map(s=>[s.date,uname(s.userId),s.visites,s.prospects,fmt(s.montant),s.zone]);
-  doc.autoTable({startY:y,head:[['Date','Agent commercial','Visites','Prospects','Montant','Zone']],body:rows,theme:'grid',headStyles:{fillColor:[30,58,95],textColor:255,fontStyle:'bold',fontSize:9},bodyStyles:{fontSize:9},alternateRowStyles:{fillColor:[244,247,244]},foot:[['','','','TOTAL',fmt(total),'']],footStyles:{fillColor:[30,58,95],textColor:255,fontStyle:'bold'}});
-  pdfFooter(doc);
-  const fname=pdfMode==='mois'?(document.getElementById('pdf-mois')?.value||currentMonth()):`${document.getElementById('pdf-du')?.value}_${document.getElementById('pdf-au')?.value}`;
-  doc.save(`ems_rapports_${fname}.pdf`);notify('PDF rapports généré !','inf');
-}
-
-function exportPDFMembresFiltre(){
-  const{jsPDF}=window.jspdf;const doc=new jsPDF('landscape');
-  let members=CU.role==='chef'?DB.users.filter(u=>u.chefId===CU.id&&u.actif):DB.users.filter(u=>u.role==='missionnaire'&&u.actif);
-  let periodLabel='Toutes périodes';
-  let statsFilter=s=>s.status==='validé';
-  if(membresPDFMode==='mois'){
-    const mois=document.getElementById('mp-mois')?.value||currentMonth();
-    periodLabel=`Mois : ${mois}`;statsFilter=s=>s.status==='validé'&&s.date.startsWith(mois);
-  }else if(membresPDFMode==='plage'){
-    const du=document.getElementById('mp-du')?.value,au=document.getElementById('mp-au')?.value;
-    if(!du||!au)return notify('Sélectionnez les deux dates','er');
-    periodLabel=`Du ${du} au ${au}`;statsFilter=s=>s.status==='validé'&&s.date>=du&&s.date<=au;
-  }
-  const y=pdfHeader(doc,`Liste des agents commerciaux — ${periodLabel}`,`${members.length} agent(s) actif(s)`);
-  const rows=members.map(m=>{
-    const ms=DB.stats.filter(s=>s.userId===m.id&&statsFilter(s));
-    const ca=ms.reduce((a,s)=>a+s.montant,0);
-    const vis=ms.reduce((a,s)=>a+s.visites,0);
-    const comm=calcComm(m.id);
-    return[m.name,m.email,m.team||'—',fmt(ca),vis,`${comm.taux}%`,fmt(comm.commission),comm.palier];
-  });
-  doc.autoTable({startY:y,head:[['Nom','Email','Équipe','Ventes validées','Visites','Taux','Commission','Statut']],body:rows,theme:'grid',headStyles:{fillColor:[13,51,32],textColor:255,fontStyle:'bold',fontSize:9},bodyStyles:{fontSize:9},alternateRowStyles:{fillColor:[234,247,239]}});
-  pdfFooter(doc);
-  doc.save(`ems_agents_${today()}.pdf`);notify('PDF agents généré !','inf');
-}
-
-function exportPDFCommissions(){
-  const{jsPDF}=window.jspdf;const doc=new jsPDF();
-  const month=currentMonth();const all=calcCommAll(month);const total=all.reduce((a,c)=>a+c.commission,0);
-  const totalVentes=all.reduce((a,c)=>a+c.total,0);
-  const y=pdfHeader(doc,`Commissions agents commerciaux — ${month}`,`Total commissions : ${fmt(total)} | Total ventes : ${fmt(totalVentes)}`);
-  // Barème
-  doc.setFontSize(9);doc.setTextColor(80,80,80);
-  doc.text('Barème : < 100 000 FCFA → 0% | 100 000 – 252 499 FCFA → 18% | ≥ 252 500 FCFA → 27%',14,y-2);
-  const rows=all.map(c=>[c.user.name,c.user.team||'—',fmt(c.total),`${c.taux}%`,fmt(c.commission),c.palier]);
-  doc.autoTable({startY:y+2,head:[['Agent commercial','Équipe','Ventes validées','Taux','Commission','Statut']],body:rows,theme:'grid',headStyles:{fillColor:[201,150,58],textColor:255,fontStyle:'bold',fontSize:9},bodyStyles:{fontSize:9},alternateRowStyles:{fillColor:[255,250,235]},foot:[['','TOTAL',fmt(totalVentes),'',fmt(total),'']],footStyles:{fillColor:[30,58,95],textColor:255,fontStyle:'bold'}});
-  pdfFooter(doc);
-  doc.save(`ems_commissions_${month}.pdf`);notify('PDF commissions exporté !','inf');
-}
-
-function exportPDFEquipes(){
-  const{jsPDF}=window.jspdf;const doc=new jsPDF();
-  const y=pdfHeader(doc,'Performance des équipes',`Mois en cours : ${currentMonth()}`);
-  const chefs=DB.users.filter(u=>u.role==='chef');let startY=y;
-  chefs.forEach((chef,i)=>{
-    const members=DB.users.filter(u=>u.chefId===chef.id&&u.actif);
-    if(i>0)startY+=6;
-    doc.setFontSize(11);doc.setFont('helvetica','bold');doc.setTextColor(30,58,95);
-    doc.text(`${chef.team||chef.name} — Chef : ${chef.name}`,14,startY);startY+=2;
-    const rows=members.map(m=>{const c=calcComm(m.id);return[m.name,m.email,fmt(c.total),`${c.taux}%`,fmt(c.commission),c.palier];});
-    if(!rows.length)rows.push(['Aucun agent','—','—','—','—','—']);
-    doc.autoTable({startY,head:[['Agent commercial','Email','Ventes validées','Taux','Commission','Statut']],body:rows,theme:'grid',headStyles:{fillColor:[46,139,87],textColor:255,fontStyle:'bold',fontSize:9},bodyStyles:{fontSize:9},alternateRowStyles:{fillColor:[234,247,239]}});
-    startY=doc.lastAutoTable.finalY+4;
-  });
-  pdfFooter(doc);
-  doc.save(`ems_equipes_${today()}.pdf`);notify('PDF équipes exporté !','inf');
-}
-
-// ══════════════════════════════════════════
-// EXPOSE GLOBAL
-// ══════════════════════════════════════════
-Object.assign(window,{
-  togglePw,doLogin,doGoogleLogin,doLogout,openPublicRecru,
-  nav,
-  showAnnForm,submitAnn,delAnn,togglePin,
-  showStatForm,submitStat,showPDFFilter,setPDFMode,exportPDFRapportsFiltres,
-  exportPDFCommissions,
-  doVal,
-  showDemandeForm,submitDemande,approuver,refuserDev,activerProfil,
-  showSuppressionForm,submitSuppression,executerSuppression,refuserSuppression,
-  showChangementForm,updateChgChefs,submitChangement,executerChangement,refuserChangement,
-  showPostForm,submitPoste,togglePoste,delPoste,showCandidForm,submitCandid,showCandidatures,setCandid,
-  showMembresPDFFilter,setMembresPDFMode,exportPDFMembresFiltre,exportPDFEquipes,
-  showPlainteForm,submitPlainte,repondre,
-  selM,openCompose,sendMsg,
-  DT,openAddUser,dvRC,addUser,toggleActif,delUser,openEditUser,saveEditUser,
-  forceVal,delStat,delMsg,resetAll,
-  closeModal
-});
-</script>
-</body>
-</html>
+  <div class="card" style="margin-bottom:16px;border-top:3px so
